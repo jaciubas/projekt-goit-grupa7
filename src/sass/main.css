@@ -3,28 +3,64 @@
  * Główny plik dla stylów.
  * Wszystkie partials podłączamy tutaj.
  */
-.example {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  line-height: 1.5;
-  background-color: #fff;
-  color: #424242;
-  max-width: 960px;
-  padding: 16px;
+/*texture - header*/
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1-mobile.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    height: 230px;
+    opacity: 90%;
+  }
 }
-
-.example code {
-  font-family: monospace;
-  font-size: 16px;
-  font-weight: 700;
-  background-color: #009688;
-  color: #fff;
-  padding: 2px 6px;
-  border-radius: 2px;
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 320px) and (max-width: 767px), screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px) and (max-width: 767px), screen and (min-resolution: 192dpi) and (min-width: 320px) and (max-width: 767px), screen and (min-resolution: 2dppx) and (min-width: 320px) and (max-width: 767px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@2x-mobile.jpg);
+  }
 }
-
-.example .background {
-  height: 240px;
-  background-image: url("../images/demo.jpg");
-  background-size: cover;
-  background-position: center;
+@media screen and (min-device-pixel-ratio: 3) and (min-width: 320px) and (max-width: 767px), screen and (-webkit-min-device-pixel-ratio: 3) and (min-width: 320px) and (max-width: 767px), screen and (min-resolution: 288dpi) and (min-width: 320px) and (max-width: 767px), screen and (min-resolution: 3dppx) and (min-width: 320px) and (max-width: 767px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@3x-mobile.jpg);
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1-tablet.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    height: 216px;
+    opacity: 90%;
+  }
+}
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px) and (max-width: 1199px), screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 768px) and (max-width: 1199px), screen and (min-resolution: 192dpi) and (min-width: 768px) and (max-width: 1199px), screen and (min-resolution: 2dppx) and (min-width: 768px) and (max-width: 1199px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@2x-tablet.jpg);
+  }
+}
+@media screen and (min-device-pixel-ratio: 3) and (min-width: 768px) and (max-width: 1199px), screen and (-webkit-min-device-pixel-ratio: 3) and (min-width: 768px) and (max-width: 1199px), screen and (min-resolution: 288dpi) and (min-width: 768px) and (max-width: 1199px), screen and (min-resolution: 3dppx) and (min-width: 768px) and (max-width: 1199px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@3x-tablet.jpg);
+  }
+}
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 1200px), screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1200px), screen and (min-resolution: 192dpi) and (min-width: 1200px), screen and (min-resolution: 2dppx) and (min-width: 1200px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@2x-desktop.jpg);
+  }
+}
+@media screen and (min-device-pixel-ratio: 3) and (min-width: 1200px), screen and (-webkit-min-device-pixel-ratio: 3) and (min-width: 1200px), screen and (min-resolution: 288dpi) and (min-width: 1200px), screen and (min-resolution: 3dppx) and (min-width: 1200px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@3x-desktop.jpg);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1-desktop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 94px;
+    margin: 0 auto;
+    height: 216px;
+  }
 }/*# sourceMappingURL=main.css.map */
