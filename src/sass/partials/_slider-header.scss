@@ -1,85 +1,82 @@
 /*texture - header*/
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-    .slider {
-      background-image: 
-        url(../images/abstract-background-with-red-lines\ 1-mobile.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin: 0 auto;
-      height: 230px;
-      opacity: 90%;
-      
-    }}
-  
-  @media screen and (min-device-pixel-ratio: 2) and (min-width: 320px) and (max-width: 767px),
-    screen and (min-resolution: 192dpi) and (min-width: 320px) and (max-width: 767px),
-    screen and (min-resolution: 2dppx) and (min-width: 320px) and (max-width: 767px) {
-    .slider {
-      background-image: url(../images/abstract-background-with-red-lines\ 1@2x-mobile.jpg);
-    }
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1-mobile.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    height: 230px;
+    opacity: 90%;
   }
-  
-  @media screen and (min-device-pixel-ratio: 3) and (min-width: 320px) and (max-width: 767px),
-    screen and (min-resolution: 288dpi) and (min-width: 320px) and (max-width: 767px),
-    screen and (min-resolution: 3dppx) and (min-width: 320px) and (max-width: 767px) {
-    .slider {
-      background-image: url(../images/abstract-background-with-red-lines\ 1@3x-mobile.jpg);
-    }
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 320px) and (max-width: 767px),
+  screen and (min-resolution: 192dpi) and (min-width: 320px) and (max-width: 767px),
+  screen and (min-resolution: 2dppx) and (min-width: 320px) and (max-width: 767px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@2x-mobile.jpg);
   }
-  
-  @media screen and (min-width: 768px) and (max-width: 1200px) {
-    .slider {
-      background-image:
-        url(../images/abstract-background-with-red-lines\ 1-tablet.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin: 0 auto;
-      height: 216px;
-      opacity: 90%;
-    }}
- 
-  
-  @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px) and (max-width: 1199px),
-    screen and (min-resolution: 192dpi) and (min-width: 768px) and (max-width: 1199px),
-    screen and (min-resolution: 2dppx) and (min-width: 768px) and (max-width: 1199px) {
-    .slider {
-      background-image: url(../images/abstract-background-with-red-lines\ 1@2x-tablet.jpg);
-    }
+}
+
+@media screen and (min-device-pixel-ratio: 3) and (min-width: 320px) and (max-width: 767px),
+  screen and (min-resolution: 288dpi) and (min-width: 320px) and (max-width: 767px),
+  screen and (min-resolution: 3dppx) and (min-width: 320px) and (max-width: 767px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@3x-mobile.jpg);
   }
-  
-  @media screen and (min-device-pixel-ratio: 3) and (min-width: 768px) and (max-width: 1199px),
-    screen and (min-resolution: 288dpi) and (min-width: 768px) and (max-width: 1199px),
-    screen and (min-resolution: 3dppx) and (min-width: 768px) and (max-width: 1199px) {
-    .slider {
-      background-image: url(../images/abstract-background-with-red-lines\ 1@3x-tablet.jpg);
-    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1-tablet.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    height: 216px;
+    opacity: 90%;
   }
-  
-   @media screen and (min-device-pixel-ratio: 2) and (min-width: 1200px),
-    screen and (min-resolution: 192dpi) and (min-width: 1200px),
-    screen and (min-resolution: 2dppx) and (min-width: 1200px) {
-    .slider {
-      background-image: url(../images/abstract-background-with-red-lines\ 1@2x-desktop.jpg);
-    }
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px) and (max-width: 1199px),
+  screen and (min-resolution: 192dpi) and (min-width: 768px) and (max-width: 1199px),
+  screen and (min-resolution: 2dppx) and (min-width: 768px) and (max-width: 1199px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@2x-tablet.jpg);
   }
-  
-  @media screen and (min-device-pixel-ratio: 3) and (min-width: 1200px),
-    screen and (min-resolution: 288dpi) and (min-width: 1200px),
-    screen and (min-resolution: 3dppx) and (min-width: 1200px) {
-    .slider {
-      background-image: url(../images/abstract-background-with-red-lines\ 1@3x-desktop.jpg);
-    }
+}
+
+@media screen and (min-device-pixel-ratio: 3) and (min-width: 768px) and (max-width: 1199px),
+  screen and (min-resolution: 288dpi) and (min-width: 768px) and (max-width: 1199px),
+  screen and (min-resolution: 3dppx) and (min-width: 768px) and (max-width: 1199px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@3x-tablet.jpg);
   }
-  
-  @media screen and (min-width: 1200px) {
-    .slider {
-      background-image: url(../images/abstract-background-with-red-lines\ 1-desktop.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin-bottom: 94px;
-      margin: 0 auto;
-      height: 216px;
-  
-    }
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 1200px),
+  screen and (min-resolution: 192dpi) and (min-width: 1200px),
+  screen and (min-resolution: 2dppx) and (min-width: 1200px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@2x-desktop.jpg);
   }
+}
+
+@media screen and (min-device-pixel-ratio: 3) and (min-width: 1200px),
+  screen and (min-resolution: 288dpi) and (min-width: 1200px),
+  screen and (min-resolution: 3dppx) and (min-width: 1200px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1@3x-desktop.jpg);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .slider {
+    background-image: url(../images/abstract-background-with-red-lines\ 1-desktop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 94px;
+    margin: 0 auto;
+    height: 216px;
+  }
+}
