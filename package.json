@@ -5,7 +5,7 @@
   "homepage": "https://github.com/jaciubas/projekt-goit-grupa7",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url projekt-goit-grupa7"
+    "build": "parcel build src/*.html --public-url https://github.com/jaciubas/projekt-goit-grupa7"
   },
   "repository": {
     "type": "git",
