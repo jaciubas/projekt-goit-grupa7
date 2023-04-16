@@ -1,0 +1,40 @@
+.modal_window {
+  background-color: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  overflow: auto;
+   
+}
+.modal_content {
+  background-color: #ffffff;
+  margin: 150px auto;
+  max-width: 806px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  color: #000000;
+  padding: 40px 12px;
+  line-height: 16px;
+  z-index: 999;
+ position: relative;
+  
+}
+.close_modal_window {
+  width: 14px;
+  height: 14px;
+  color: #000000;
+  cursor: pointer;
+  
+position: absolute; 
+  top: 16px;
+  right: 16px;
+};
+.modal_inner{
+ 
+ 
+ 
+};
+
