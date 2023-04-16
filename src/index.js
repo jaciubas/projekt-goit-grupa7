@@ -1,2 +1,2 @@
 import './sass/main.scss';
-import './JS/my';
+import './JS/movie-template';

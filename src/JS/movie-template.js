@@ -4,11 +4,12 @@ const url =
 const main = document.querySelector('main');
 
 const createMovieFeatureHTML = (image, title, genres, year, rating) => {
-  return `<li class="movie__feature">
+  const twoGenres = genres.slice(0, 2).join(', ');
+  return `<li class="movie__template">
     <img class="movie__image" src="${image}" alt='${title}' width="280px" height="398px"/> 
     <h5 class="movie__title">${title}</h5>
-    <div class="movie__informations"><span>${genres.join(', ')}</span> | <span>${year}</span></div>
-    <div>${rating}</div>
+    <div class="movie__informations"><span>${twoGenres}</span> | <span>${year}</span>
+    <span class="movie__rating">${rating}</span></div>
   </li>`;
 };
 
