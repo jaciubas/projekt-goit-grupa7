@@ -39,7 +39,7 @@
 }
 @media screen and (min-width: 760px) {
   .modal_content {
-    margin: 219px 32px;
+    margin: 219px auto;
     max-width: 704px;
   }
 }
@@ -48,4 +48,10 @@
   .modal_inner {
     margin: 40px 72px 40px 36px;
   }
+  .modal_content {
+  margin: 150px auto;
+  max-width: 806px;
+  padding: 40px 12px;
+  
+}
 }
