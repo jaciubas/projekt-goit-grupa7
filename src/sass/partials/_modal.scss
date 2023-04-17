@@ -1,13 +1,13 @@
 .modal_window {
   background-color: rgba(0, 0, 0, 0.25);
   position: fixed;
+  // display: none;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 1000;
   overflow: auto;
-   
 }
 .modal_content {
   background-color: #ffffff;
@@ -19,17 +19,33 @@
   padding: 40px 12px;
   line-height: 16px;
   z-index: 999;
- position: relative;
-  
+  position: relative;
 }
 .close_modal_window {
   width: 14px;
   height: 14px;
   color: #000000;
   cursor: pointer;
-  
-position: absolute; 
+  position: absolute;
   top: 16px;
   right: 16px;
-};
+}
 
+@media screen and (min-width: 320px) {
+  .modal_content {
+    margin: 20px auto;
+    max-width: 280px;
+  }
+}
+@media screen and (min-width: 760px) {
+  .modal_content {
+    margin: 219px 32px;
+    max-width: 704px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .modal_inner {
+    margin: 40px 72px 40px 36px;
+  }
+}
