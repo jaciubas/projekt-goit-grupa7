@@ -11,3 +11,9 @@ const createMovieFeatureHTML = (image, title, genres, year, rating) => {
     <span class="movie__rating">${rating}</span></div>
   </li>`;
 };
+
+
+// TO DO:
+// - Make an array for filtered movies
+// - adding movies by clicing on several buttons
+// - Use some "id" and other atributes to seperate them from others
