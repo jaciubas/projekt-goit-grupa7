@@ -6,7 +6,10 @@ const url =
 const close = document.querySelector('.close_modal_window');
 const modal = document.querySelector('.modal_window');
 const main = document.querySelector('main');
+<<<<<<< Updated upstream
 const movieTemplate = document.querySelector('.movie__template');
+=======
+>>>>>>> Stashed changes
 
 console.log(main);
 
@@ -17,6 +20,7 @@ close.addEventListener('click', () => {
 main.addEventListener('click', onShowModal);
 
 async function onShowModal(e) {
+<<<<<<< Updated upstream
     modal.classList.remove('is-hidden');
   const selectedMovie = e.target;
   console.log(selectedMovie);
@@ -27,6 +31,16 @@ async function onShowModal(e) {
 async function getMovieAndUpdateUI(selectedMovie) {
   try {
     const movie = await createMovieFeature(selectedMovie);
+=======
+  modal.classList.remove('is-hidden');
+  //   const selectedMovie = e.target;
+  //   console.log(selectedMovie);
+}
+
+async function getMovieAndUpdateUI(numb) {
+  try {
+    const movie = await createMovieFeature(76600);
+>>>>>>> Stashed changes
     const { id, title, originalTitle, about, image, genres, popularity, vote, votes } =
       movie.forMarkup;
     const { desktop, tablet, mobile } = image;
