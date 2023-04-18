@@ -1,0 +1,35 @@
+.slider_buttons {
+  display: flex;
+  justify-content: center;
+  &-elem {
+    cursor: pointer;
+    color: #fff;
+    background-color: transparent;
+    width: 130px;
+    height: 44px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    &:first-child {
+      margin-right: 30px;
+    }
+    &:hover {
+      background-color: #ff6b02;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .slider_buttons {
+    &-elem {
+      width: 152px;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .slider_buttons {
+    &-elem {
+      width: 148px;
+    }
+  }
+}
