@@ -9,6 +9,7 @@
   opacity: 90%;
   padding-top: 3%;
   position: relative;
+  padding-top: 40px;
 }
 
 @media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
@@ -82,6 +83,7 @@
   &_nav {
     display: flex;
     justify-content: flex-end;
+    padding-bottom: 20px;
   }
   &_list {
     list-style: none;
@@ -93,7 +95,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.17rem;
+    font-size: 0.8rem;
     line-height: 14px;
     text-decoration: none;
     &:last-child {
@@ -103,10 +105,15 @@
     &--home {
       color: #fff;
       text-decoration: none;
+      cursor: pointer;
     }
     &--libary {
       color: #fff;
       text-decoration: none;
+      cursor: pointer;
+    }
+    .underline-nav {
+      border-bottom: 3px solid red;
     }
   }
   &_input {
@@ -134,10 +141,70 @@
     position: relative;
     right: 12px;
   }
+  &_logo-text {
+    display: none;
+  }
+  &_logo {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+  }
+  &_logo-block {
+    display: flex;
+    margin-top: 9px;
+  }
+  &_logo-link {
+    display: flex;
+  }
+  .slider-nav-logo {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+  }
 }
 
-.slider-nav-logo {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row-reverse;
+@media screen and (min-width: 768px) {
+  .slider {
+    height: 219px;
+    &_input {
+      min-width: 336px;
+    }
+    &_logo-text {
+      display: block;
+      padding-left: 15px;
+    }
+
+    &_logo-block {
+      margin-bottom: 20px;
+    }
+    &_logo-link {
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .slider {
+    height: 216px;
+    &_input {
+      min-width: 394px;
+    }
+
+    &_logo-link {
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.4rem;
+    }
+  }
+  .slider .slider-nav-logo {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    margin: 0 50px 0 50px;
+  }
 }
