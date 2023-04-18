@@ -1,15 +1,16 @@
-import { createMovieFeature } from './movie-template';
-
 const url =
   'https://api.themoviedb.org/3/trending/all/week?api_key=28f50cf3f177782503c21b43af04c7bc';
 
 const close = document.querySelector('.close_modal_window');
 const modal = document.querySelector('.modal_window');
+
 const main = document.querySelector('main');
 const movieTemplate = document.querySelector('.movie__template');
 
-
 console.log(main);
+
+const innerModal = document.querySelector('.modal_inner');
+const movieTemplates = document.querySelector('.movie__templates');
 
 close.addEventListener('click', () => {
   modal.style.display = 'none';
@@ -18,31 +19,28 @@ close.addEventListener('click', () => {
 main.addEventListener('click', onShowModal);
 
 async function onShowModal(e) {
-
-    modal.classList.remove('is-hidden');
+  modal.classList.remove('is-hidden');
   const selectedMovie = e.target;
   console.log(selectedMovie);
   getMovieAndUpdateUI(selectedMovie);
-  
 }
 
 async function getMovieAndUpdateUI(selectedMovie) {
+  const movie = await createMovieFeature(selectedMovie);
+
+  modal.classList.remove('is-hidden');
+  //   const selectedMovie = e.target;
+  //   console.log(selectedMovie);
+}
+
+async function getMovieAndUpdateUI() {
   try {
-    const movie = await createMovieFeature(selectedMovie);
+    const movie = await createMovieFeature();
 
-    modal.classList.remove('is-hidden');
-    //   const selectedMovie = e.target;
-    //   console.log(selectedMovie);
-  }
-
-async function getMovieAndUpdateUI(numb) {
-    try {
-      const movie = await createMovieFeature(76600);
-
-      const { id, title, originalTitle, about, image, genres, popularity, vote, votes } =
-        movie.forMarkup;
-      const { desktop, tablet, mobile } = image;
-      const modalMarkup = `
+    const { id, title, originalTitle, about, image, genres, popularity, vote, votes } =
+      movie.forMarkup;
+    const { desktop, tablet, mobile } = image;
+    const modalMarkup = `
       <div class="modalMarkup trailer__picture">
          <picture>
             <source srcset=${desktop} media="(min-width: 1200px)">
@@ -90,10 +88,8 @@ async function getMovieAndUpdateUI(numb) {
         </div>
       </div>`;
 
-      modal.insertAdjacentHTML('beforeend', modalMarkup);
-    } catch (e) {
-      console.log(e);
-    }
+    modal.insertAdjacentHTML('beforeend', modalMarkup);
+  } catch (e) {
+    console.log(e);
   }
 }
-
