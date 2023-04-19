@@ -1,5 +1,6 @@
 const main = document.querySelector('main');
 
+
 //TWORZENIE SZABLONU FILMU NA STRONĘ GŁÓWNĄ
 const createMainMovieTemplateHTML = (image, id, title, genres, year) => {
   const twoGenres = genres.slice(0, 2).join(', ');
