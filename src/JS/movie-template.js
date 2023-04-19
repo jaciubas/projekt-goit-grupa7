@@ -13,6 +13,7 @@ const createMainMovieTemplateHTML = (image, id, title, genres, year) => {
 
 const createMainMovieTemplate = async movies => {
   const moviesList = await Promise.all(
+
     movies.map(async movie => {
       const image = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
       const id = movie.id;
