@@ -1,4 +1,4 @@
-import Pagination from 'tui-pagination';
+// import Pagination from 'tui-pagination';
 
 const options = {
   totalItems: 200,
