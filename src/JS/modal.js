@@ -1,16 +1,18 @@
 
-
 const url =
   'https://api.themoviedb.org/3/trending/all/week?api_key=28f50cf3f177782503c21b43af04c7bc';
 
 const close = document.querySelector('.close_modal_window');
 const modal = document.querySelector('.modal_window');
+
 const main = document.querySelector('main');
 const movieTemplate = document.querySelector('.movie__template');
 const modalInner = document.querySelector('.modal_inner');
 
-
 console.log(main);
+
+const innerModal = document.querySelector('.modal_inner');
+const movieTemplates = document.querySelector('.movie__templates');
 
 close.addEventListener('click', () => {
   modal.style.display = 'none';
@@ -19,6 +21,7 @@ close.addEventListener('click', () => {
 main.addEventListener('click', onShowModal);
 
 async function onShowModal(e) {
+
 
     if (!e.target.classList.contains('movie__image')) {
       return;
@@ -46,6 +49,7 @@ async function getMovie(movieId) {
 
 async function getMovieAndUpdateUI(movie) {
   try {
+
     const modalMarkup = `
       <div class="modalMarkup trailer__picture">
          <picture>
@@ -94,10 +98,10 @@ async function getMovieAndUpdateUI(movie) {
         </div>
       </div>`;
 
+
      modalInner.insertAdjacentHTML('beforeend', modalMarkup);
+
   } catch (e) {
     console.log(e);
   }
 }
-
-
