@@ -106,11 +106,17 @@
       color: #fff;
       text-decoration: none;
       cursor: pointer;
+      &:hover {
+        border-bottom: 3px solid red;
+      }
     }
     &--libary {
       color: #fff;
       text-decoration: none;
       cursor: pointer;
+      &:hover {
+        border-bottom: 3px solid red;
+      }
     }
     .underline-nav {
       border-bottom: 3px solid red;
@@ -140,6 +146,18 @@
   &_search {
     position: relative;
     right: 12px;
+    height: 17px;
+    width: 12px;
+    background-color: rgb(1, 1, 1, 0);
+    border: 0;
+    &:hover {
+      cursor: pointer;
+    }
+    &--image {
+      position: absolute;
+      left: 0;
+      top: 3px;
+    }
   }
   &_logo-text {
     display: none;
