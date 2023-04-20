@@ -51,7 +51,7 @@ async function getMovieAndUpdateUI(movie) {
             <source src= ${mobile} media="(min-width: 320px)">
             <img src= https://image.tmdb.org/t/p/original${movie.poster_path} alt=${
       movie.title
-    } class="modal__img">
+    } id =${movie.id} class="modal__img">
         </picture>
       </div>
       <div class="modal__content-movie">
