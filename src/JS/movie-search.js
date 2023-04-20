@@ -52,5 +52,3 @@ searchMoviesForm.addEventListener('submit', e => {
     searchMovieInput.value = '';
   }
 });
-
-// getResults();
