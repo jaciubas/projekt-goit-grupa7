@@ -14,7 +14,7 @@ const dataArray = [];
 
 //FETCH najpopularniejszych na dziś filmów
 const url =
-  'https://api.themoviedb.org/3/trending/all/day?api_key=28f50cf3f177782503c21b43af04c7bc';
+  'https://api.themoviedb.org/3/genre/movie/list?api_key=28f50cf3f177782503c21b43af04c7bc';
 
 const getPopularMoviesData = async () => {
   try {
