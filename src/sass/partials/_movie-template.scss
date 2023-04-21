@@ -1,11 +1,11 @@
 .movie__template {
-    width: 280px;
+    max-width: 280px;
     list-style: none;
 }
 
 @media screen and (min-width: 768px) {
 .movie__template {
-    width: 336px;
+    max-width: 336px;
     }
 }
 @media screen and (min-width: 1280px) {
@@ -16,7 +16,9 @@
 
 .movie__image {
     border-radius: 5px;
+    cursor: pointer;
 }
+
 @media screen and (min-width: 768px) {
     .movie__image {
         width: 336px;
