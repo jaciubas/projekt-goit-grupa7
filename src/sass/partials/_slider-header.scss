@@ -88,7 +88,7 @@
   screen and (min-resolution: 192dpi) and (max-width: 767px),
   screen and (min-resolution: 2dppx) and (max-width: 767px) {
   .slider-library {
-    background-image: url(../../images/library-mb@x2.png);
+    background-image: url(../images/library-mb@x2.png);
   }
 }
 
@@ -96,13 +96,13 @@
   screen and (min-resolution: 288dpi) and (max-width: 767px),
   screen and (min-resolution: 3dppx) and (max-width: 767px) {
   .slider-library {
-    background-image: url(../../images/library-mb@x3.png);
+    background-image: url(../images/library-mb@x3.png);
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1200px) {
   .slider-library {
-    background-image: url(../../images/library-tb.png);
+    background-image: url(../images/library-tb.png);
     height: 216px;
   }
 }
@@ -134,14 +134,14 @@
 @media screen and (min-device-pixel-ratio: 3) and (min-width: 1200px),
   screen and (min-resolution: 288dpi) and (min-width: 1200px),
   screen and (min-resolution: 3dppx) and (min-width: 1200px) {
-  .slider-home {
+  .slider-library {
     background-image: url(../images/library-dt@x3.png);
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .slider-home {
-    background-image: url(../images/library-dt@.png);
+  .slider-library {
+    background-image: url(../images/library-dt.png);
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 94px;
