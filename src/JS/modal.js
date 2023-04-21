@@ -4,6 +4,7 @@ const url =
 
 const close = document.querySelector('.close_modal_window');
 const modal = document.querySelector('.modal_window');
+console.log(modal)
 const main = document.querySelector('main');
 const movieTemplate = document.querySelector('.movie__template');
 
@@ -12,21 +13,27 @@ const innerModal = document.querySelector('.modal_inner');
 
 console.log(main);
 
-close.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
+async function onCloseModal() {
+  modal.classList.add('is-hidden');
+  innerModal.innerHTML = '';
+ 
+}
+
 
 main.addEventListener('click', onShowModal);
+close.addEventListener('click', onCloseModal);
 
 async function onShowModal(e) {
+
+  e.preventDefault();
 
   if (!e.target.classList.contains('movie__image')) {
     return;
   } else {
-    
     modal.classList.remove('is-hidden');
     const selectedMovieId = e.target.id;
     getMovie(selectedMovieId);
+  
   }
 }
 
@@ -58,10 +65,10 @@ async function getMovieAndUpdateUI(movie) {
             <source src= ${mobile} media="(min-width: 320px)">
             <img src= https://image.tmdb.org/t/p/original${movie.poster_path} alt=${
       movie.title
-    } class="modal__img">
+    } id =${movie.id} class="modal__img">
         </picture>
       </div>
-      <div class="modal__content-movie">
+      <div class="modal__content-movie ">
 
         <p class="modal__title">${movie.title}</p>
         <div class="modal__box">
