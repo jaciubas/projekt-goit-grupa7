@@ -1,7 +1,8 @@
-// import Pagination from 'tui-pagination';
+import { getPopularMoviesData } from './movie-template';
+import Pagination from 'tui-pagination';
 
 const options = {
-  totalItems: 200,
+  totalItems: 1000,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -22,6 +23,16 @@ const options = {
   },
 };
 
-export const pagination = new Pagination('pagination', options);
+const pagination = new Pagination('pagination', options);
+
+pagination.on('afterMove', function (eventData) {
+  const currentPage = eventData.page;
+  const startIndex = (currentPage - 1) * options.itemsPerPage;
+  const endIndex = startIndex + options.itemsPerPage;
+
+  if (currentPage > 1) {
+    getPopularMoviesData(startIndex, endIndex);
+  }
+});
 
 export default pagination;
