@@ -3,7 +3,9 @@ const url =
 
 const close = document.querySelector('.close_modal_window');
 const modal = document.querySelector('.modal_window');
+
 console.log(modal);
+
 const main = document.querySelector('main');
 const movieTemplate = document.querySelector('.movie__template');
 const innerModal = document.querySelector('.modal_inner');
@@ -13,12 +15,15 @@ console.log(main);
 async function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
+
 }
+
 
 main.addEventListener('click', onShowModal);
 close.addEventListener('click', onCloseModal);
 
 async function onShowModal(e) {
+
   e.preventDefault();
   if (!e.target.classList.contains('movie__image')) {
     return;
@@ -26,6 +31,7 @@ async function onShowModal(e) {
     modal.classList.remove('is-hidden');
     const selectedMovieId = e.target.id;
     getMovie(selectedMovieId);
+  
   }
 }
 
@@ -57,6 +63,8 @@ async function getMovieAndUpdateUI(movie) {
         </picture>
       </div>
       <div class="modal__content-movie ">
+
+
         <p class="modal__title">${movie.title}</p>
         <div class="modal__box">
           <div class="film-features">
