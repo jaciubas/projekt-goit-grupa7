@@ -1,6 +1,5 @@
 const main = document.querySelector('main');
 
-
 //TWORZENIE SZABLONU FILMU NA STRONĘ GŁÓWNĄ
 const createMainMovieTemplateHTML = (image, id, title, genres, year) => {
   const twoGenres = genres.slice(0, 2).join(', ');
@@ -13,7 +12,6 @@ const createMainMovieTemplateHTML = (image, id, title, genres, year) => {
 
 const createMainMovieTemplate = async movies => {
   const moviesList = await Promise.all(
-
     movies.map(async movie => {
       const image = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
       const id = movie.id;
