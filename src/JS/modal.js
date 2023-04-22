@@ -11,23 +11,29 @@ const movieTemplate = document.querySelector('.movie__template');
 const innerModal = document.querySelector('.modal_inner');
 
 console.log(main);
-
-async function onCloseModal() {
+function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
+  //nie nasłuchuje
+  modal.classList.remove('visible');
+  document.removeEventListener('keydown', handleKeyDown);
+  document.removeEventListener('click', handleClickOutside);
 
 }
-main.addEventListener('click', onShowModal);
-close.addEventListener('click', onCloseModal);
-main.addEventListener("keydown", (event)=>{
-  if (event.key === "Escape"){
-    modal.classList.add('is-hidden');
-    innerModal.innerHTML = '';
-  
+// kliknięcie esc
+function handleKeyDown(event) {
+  if (event.key === 'Escape') {
+    onCloseModal();
   }
-})
-async function onShowModal(e) {
-
+}
+// kliknięcie poza oknem modalnym
+function handleClickOutside(event) {
+  if (!modal.contains(event.target)) {
+    onCloseModal();
+  }
+};
+//pokaż moadlne
+function onShowModal(e) {
   e.preventDefault();
   if (!e.target.classList.contains('movie__image')) {
     return;
@@ -37,8 +43,10 @@ async function onShowModal(e) {
     getMovie(selectedMovieId);
   
   }
-  
 }
+
+main.addEventListener('click', onShowModal);
+close.addEventListener('click', onCloseModal);
 
 async function getMovie(movieId) {
   try {
