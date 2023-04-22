@@ -1,5 +1,3 @@
-const movieId = 640146;
-
 const innerModal = document.querySelector('.modal_inner');
 const modalVideo = document.querySelector('.video_modal');
 
@@ -43,9 +41,8 @@ const openMovieVideo = e => {
     return;
   } else {
     modalVideo.classList.remove('video_modal-hidden');
-    //pobranie id z modal__img
-    //   const selectedMovieId = e.target.id;
-    getMovieVideos(movieId);
+    const selectedMovieId = e.target.id;
+    getMovieVideos(selectedMovieId);
   }
 };
 
