@@ -6,7 +6,7 @@ const searchErrorMsg = document.querySelector('.error-msg');
 const API_KEY = '28f50cf3f177782503c21b43af04c7bc';
 const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${API_KEY}&page=1&query=`;
 
-searchErrorMsg.classList.add('.is-hidden');
+searchErrorMsg.classList.add('is-hidden');
 
 const getResults = async url => {
   try {
@@ -16,7 +16,7 @@ const getResults = async url => {
     showResults(data.results);
     getGenresData(data.genres);
     if (data.results.length === 0) {
-      searchErrorMsg.classList.remove('.is-hidden');
+      searchErrorMsg.classList.remove('is-hidden');
       main.innerHTML = '';
       return;
     }
