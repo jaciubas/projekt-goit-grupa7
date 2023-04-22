@@ -17,11 +17,15 @@ async function onCloseModal() {
   innerModal.innerHTML = '';
 
 }
-
-
 main.addEventListener('click', onShowModal);
 close.addEventListener('click', onCloseModal);
-
+main.addEventListener("keydown", (event)=>{
+  if (event.key === "Escape"){
+    modal.classList.add('is-hidden');
+    innerModal.innerHTML = '';
+  
+  }
+})
 async function onShowModal(e) {
 
   e.preventDefault();
@@ -33,6 +37,7 @@ async function onShowModal(e) {
     getMovie(selectedMovieId);
   
   }
+  
 }
 
 async function getMovie(movieId) {
