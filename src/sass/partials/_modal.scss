@@ -81,11 +81,36 @@
 
   }
 }
+
+.trailer__picture {
+  position: relative;
+&:hover .modal__svg {
+  fill: #ff6b01;
+}
+}
+
 .modal__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+.modal__svg {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+fill: #fff;
+z-index: 1001;
+}
+
+@media screen and (min-width: 1200px) {
+  .modal__svg {
+width: 100px;
+height: 100px;
+  }
+}
+
 .modal__title {
   font-size: 20px;
   font-weight: 500;
