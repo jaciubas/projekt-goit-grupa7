@@ -23,6 +23,7 @@ const findVideoKey = videos => {
 
 //FETCH video zwiastunu po id filmu
 const getMovieVideos = async movieId => {
+  
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=28f50cf3f177782503c21b43af04c7bc`,
