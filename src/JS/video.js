@@ -34,15 +34,15 @@ const getMovieVideos = async movieId => {
     console.log(error);
   }
 };
-
+// || e.target.closest('.modal__svg *')
 //Otwieranie video
 const openMovieVideo = e => {
-  if (!e.target.classList.contains('modal__img')) {
-    return;
-  } else {
+  if (e.target.closest('.trailer__picture')) {
     modalVideo.classList.remove('video_modal-hidden');
     const selectedMovieId = e.target.id;
     getMovieVideos(selectedMovieId);
+  } else {
+    return;
   }
 };
 
