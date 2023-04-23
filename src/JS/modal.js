@@ -1,3 +1,5 @@
+import data1 from './watched&queue';
+
 const url =
   'https://api.themoviedb.org/3/trending/all/week?api_key=28f50cf3f177782503c21b43af04c7bc';
 
@@ -14,6 +16,7 @@ console.log(main);
 function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
+
    document.body.classList.remove('stop-scrolling');
 
 }
@@ -33,7 +36,6 @@ close.addEventListener('click', onCloseModal);
 document.addEventListener('keydown', onCloseModalEscKey);
 
 async function onShowModal(e) {
-
   e.preventDefault();
   if (!e.target.classList.contains('movie__image')) {
     return;
@@ -69,10 +71,18 @@ async function getMovieAndUpdateUI(movie) {
             <source src= ${desktop} media="(min-width: 1200px)">
             <source src= ${tablet} media="(min-width: 768px)">
             <source src= ${mobile} media="(min-width: 320px)">
-            <img src= https://image.tmdb.org/t/p/original${movie.poster_path} alt=${
-      movie.title
-    } id =${movie.id} class="modal__img">
+            <img src= https://image.tmdb.org/t/p/original${movie.poster_path} 
+            alt=${movie.title} 
+            id =${movie.id} class="modal__img">
         </picture>
+        <svg xmlns="http://www.w3.org/2000/svg" 
+        width="70px" height="70px" 
+        class="modal__svg" 
+        id=${movie.id}
+        viewBox="0 0 16 16">
+         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+         <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+        </svg>
       </div>
       <div class="modal__content-movie ">
 
@@ -119,11 +129,22 @@ async function getMovieAndUpdateUI(movie) {
 }
 
 // KOD DOTYCZĄCY PODPIĘCIA WATCHED I QUEUE
-import { setWatched } from './watched_queue/watched&queue';
-import { setQueue } from './watched_queue/watched&queue';
+const movieIdForWatched = e => {
+  const id = e.currentTarget.dataset.id;
+  data1.setWatched(id);
+};
+
+const movieIdForQueue = e => {
+  const id = e.currentTarget.dataset.id;
+  data1.setQueue(id);
+};
+
+const queueBtn = document.querySelector('.modal__btn--queue');
+if (queueBtn) {
+  queueBtn.addEventListener('click', movieIdForQueue);
+}
 
 const watchedBtn = document.querySelector('.modal__btn--watched');
-const queueBtn = document.querySelector('.modal__btn--queue');
-
-// watchedBtn.addEventListener('click', setWatched);
-// queueBtn.addEventListener('click', setQueue);
+if (watchedBtn) {
+  watchedBtn.addEventListener('click', movieIdForWatched);
+}
