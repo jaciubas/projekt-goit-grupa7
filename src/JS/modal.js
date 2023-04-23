@@ -17,6 +17,7 @@ function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
 
+
   document.body.classList.remove('stop-scrolling');
 }
 function onCloseModalEscKey(e) {
@@ -25,11 +26,11 @@ function onCloseModalEscKey(e) {
     modal.removeEventListener('click', onCloseModal);
     document.body.classList.remove('stop-scrolling');
   }
+
 }
 
 main.addEventListener('click', onShowModal);
 close.addEventListener('click', onCloseModal);
-document.addEventListener('keydown', onCloseModalEscKey);
 
 async function onShowModal(e) {
   e.preventDefault();
@@ -39,7 +40,6 @@ async function onShowModal(e) {
     modal.classList.remove('is-hidden');
     const selectedMovieId = e.target.id;
     getMovie(selectedMovieId);
-    document.body.classList.add('stop-scrolling');
   }
 }
 
@@ -52,6 +52,7 @@ async function getMovie(movieId) {
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=28f50cf3f177782503c21b43af04c7bc`,
     );
     const movieInformation = await response.json();
+    console.log(movieInformation);
     getMovieAndUpdateUI(movieInformation);
   } catch (error) {
     console.log(error);

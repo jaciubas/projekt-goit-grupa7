@@ -1,6 +1,9 @@
+import { Spinner } from 'spin.js';
+import { opts } from './spinner';
 const innerModal = document.querySelector('.modal_inner');
 const modalVideo = document.querySelector('.video_modal');
-
+const spinner = new Spinner(opts).spin();
+const loader = document.getElementById('loader');
 //video iframe
 const showVideoHTML = videoKey => {
   const iframe = `<iframe class="video_iframe"
@@ -23,6 +26,7 @@ const findVideoKey = videos => {
 
 //FETCH video zwiastunu po id filmu
 const getMovieVideos = async movieId => {
+  loader.appendChild(spinner.el);
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=28f50cf3f177782503c21b43af04c7bc`,
@@ -32,6 +36,8 @@ const getMovieVideos = async movieId => {
     findVideoKey(movieVideos);
   } catch (error) {
     console.log(error);
+  }finally {
+    spinner.stop();
   }
 };
 

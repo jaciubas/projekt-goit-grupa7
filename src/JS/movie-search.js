@@ -1,3 +1,5 @@
+import { Spinner } from 'spin.js';
+import { opts } from './spinner';
 const searchMoviesForm = document.querySelector('#form');
 const searchMovieInput = document.querySelector('#topSearch');
 const main = document.querySelector('main');
@@ -5,7 +7,8 @@ const searchErrorMsg = document.querySelector('.error-msg');
 
 const API_KEY = '28f50cf3f177782503c21b43af04c7bc';
 const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${API_KEY}&page=1&query=`;
-
+const spinner = new Spinner(opts).spin();
+const loader = document.getElementById('loader');
 searchErrorMsg.classList.add('is-hidden');
 
 const getResults = async url => {
@@ -27,6 +30,7 @@ const getResults = async url => {
 const showResults = movies => {
   main.innerHTML = '';
   movies.forEach(async movie => {
+
     let { id, title, genres, year } = movie;
     const IMAGE_PATH = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
     const movieDate = movie.release_date ? movie.release_date : movie.first_air_date;
@@ -55,6 +59,7 @@ const searchIdForName = (data, arrayOfIds) => {
 };
 
 const getGenresData = async arrayOfIds => {
+  loader.appendChild(spinner.el);
   try {
     const GENRES_PATH = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
     const response = await fetch(GENRES_PATH);
@@ -66,6 +71,8 @@ const getGenresData = async arrayOfIds => {
     }
   } catch (error) {
     console.log(error);
+  } finally {
+    spinner.stop();
   }
 };
 
