@@ -15,15 +15,12 @@ console.log(main);
 async function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
-
 }
-
 
 main.addEventListener('click', onShowModal);
 close.addEventListener('click', onCloseModal);
 
 async function onShowModal(e) {
-
   e.preventDefault();
   if (!e.target.classList.contains('movie__image')) {
     return;
@@ -31,7 +28,6 @@ async function onShowModal(e) {
     modal.classList.remove('is-hidden');
     const selectedMovieId = e.target.id;
     getMovie(selectedMovieId);
-  
   }
 }
 
@@ -105,3 +101,13 @@ async function getMovieAndUpdateUI(movie) {
     console.log(e);
   }
 }
+
+// KOD DOTYCZĄCY PODPIĘCIA WATCHED I QUEUE
+import { setWatched } from './watched_queue/watched&queue';
+import { setQueue } from './watched_queue/watched&queue';
+
+const watchedBtn = document.querySelector('.modal__btn--watched');
+const queueBtn = document.querySelector('.modal__btn--queue');
+
+// watchedBtn.addEventListener('click', setWatched);
+// queueBtn.addEventListener('click', setQueue);
