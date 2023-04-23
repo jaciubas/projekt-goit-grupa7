@@ -14,26 +14,14 @@ console.log(main);
 function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
-  //nie nasłuchuje
-  modal.classList.remove('visible');
-  document.removeEventListener('keydown', handleKeyDown);
-  document.removeEventListener('click', handleClickOutside);
 
 }
-// kliknięcie esc
-function handleKeyDown(event) {
-  if (event.key === 'Escape') {
-    onCloseModal();
-  }
-}
-// kliknięcie poza oknem modalnym
-function handleClickOutside(event) {
-  if (!modal.contains(event.target)) {
-    onCloseModal();
-  }
-};
-//pokaż moadlne
-function onShowModal(e) {
+
+main.addEventListener('click', onShowModal);
+close.addEventListener('click', onCloseModal);
+
+async function onShowModal(e) {
+
   e.preventDefault();
   if (!e.target.classList.contains('movie__image')) {
     return;
@@ -41,7 +29,6 @@ function onShowModal(e) {
     modal.classList.remove('is-hidden');
     const selectedMovieId = e.target.id;
     getMovie(selectedMovieId);
-  
   }
 }
 
@@ -118,3 +105,13 @@ async function getMovieAndUpdateUI(movie) {
     console.log(e);
   }
 }
+
+// KOD DOTYCZĄCY PODPIĘCIA WATCHED I QUEUE
+import { setWatched } from './watched_queue/watched&queue';
+import { setQueue } from './watched_queue/watched&queue';
+
+const watchedBtn = document.querySelector('.modal__btn--watched');
+const queueBtn = document.querySelector('.modal__btn--queue');
+
+// watchedBtn.addEventListener('click', setWatched);
+// queueBtn.addEventListener('click', setQueue);
