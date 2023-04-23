@@ -126,3 +126,12 @@ getPopularMoviesData(1);
 //     console.error(error);
 //     spinner.stop(); // Ukrycie spinnera w przypadku błędu
 //   });
+
+const libraries = {
+  createMainMovieTemplateHTML,
+  createMainMovieTemplate,
+  searchIdForName,
+  getGenresData,
+};
+
+export default libraries;
