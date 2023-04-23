@@ -1,3 +1,5 @@
+import data1 from './watched&queue';
+
 const url =
   'https://api.themoviedb.org/3/trending/all/week?api_key=28f50cf3f177782503c21b43af04c7bc';
 
@@ -113,11 +115,22 @@ async function getMovieAndUpdateUI(movie) {
 }
 
 // KOD DOTYCZĄCY PODPIĘCIA WATCHED I QUEUE
-import { setWatched } from './watched_queue/watched&queue';
-import { setQueue } from './watched_queue/watched&queue';
+const movieIdForWatched = e => {
+  const id = e.currentTarget.dataset.id;
+  data1.setWatched(id);
+};
+
+const movieIdForQueue = e => {
+  const id = e.currentTarget.dataset.id;
+  data1.setQueue(id);
+};
+
+const queueBtn = document.querySelector('.modal__btn--queue');
+if (queueBtn) {
+  queueBtn.addEventListener('click', movieIdForQueue);
+}
 
 const watchedBtn = document.querySelector('.modal__btn--watched');
-const queueBtn = document.querySelector('.modal__btn--queue');
-
-// watchedBtn.addEventListener('click', setWatched);
-// queueBtn.addEventListener('click', setQueue);
+if (watchedBtn) {
+  watchedBtn.addEventListener('click', movieIdForWatched);
+}
