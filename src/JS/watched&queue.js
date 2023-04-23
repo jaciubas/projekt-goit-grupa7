@@ -31,17 +31,16 @@ const getQueue = loadFromLocalStorage(queueKey) || [];
 const setWatched = id => {
   if (getWatched.includes(id)) {
     Notiflix.Notify.info('You allready added this movie to watched.');
-  } else {
-    getWatched.push(id);
-    console.log(getWatched);
-    try {
-      addToWatched();
-      Notiflix.Notify.success('Succesfully added to watched.');
-      console.log(addToWatched);
-    } catch (error) {
-      console.log(error);
-      Notiflix.Notify.failure('Something went wrong. Please, try again later.');
-    }
+  }
+  getWatched.push(id);
+  console.log(getWatched);
+  try {
+    addToWatched();
+    Notiflix.Notify.success('Succesfully added to watched.');
+    console.log(addToWatched);
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Something went wrong. Please, try again later.');
   }
 };
 
@@ -60,4 +59,17 @@ const setQueue = id => {
   }
 };
 
-export { setWatched, setQueue };
+const data1 = {
+  watchedKey,
+  queueKey,
+  saveToLocalStorage,
+  loadFromLocalStorage,
+  addToWatched,
+  addToQueue,
+  getWatched,
+  getQueue,
+  setWatched,
+  setQueue,
+};
+
+export default data1;
