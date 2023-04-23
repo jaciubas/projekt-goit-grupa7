@@ -1,4 +1,7 @@
 import pagination from './pagination';
+import { Spinner } from 'spin.js';
+import { opts } from './spinner';
+
 const main = document.querySelector('main');
 
 //TWORZENIE SZABLONU FILMU NA STRONĘ GŁÓWNĄ
@@ -83,8 +86,12 @@ const getGenresData = async arrayOfIds => {
   }
 };
 
+const spinner = new Spinner(opts).spin();
+const loader = document.getElementById('loader');
+
 //FETCH najpopularniejszych na dziś filmów
 export const getPopularMoviesData = async page => {
+  loader.appendChild(spinner.el);
   const url = `https://api.themoviedb.org/3/trending/all/day?api_key=28f50cf3f177782503c21b43af04c7bc&page=${page}`;
   try {
     const response = await fetch(url);
@@ -92,7 +99,11 @@ export const getPopularMoviesData = async page => {
     const popularMovies = await data.results;
     createMainMovieTemplate(popularMovies);
     pagination.setCurrentPage(page);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  } finally {
+    spinner.stop();
+  }
 };
 
 pagination.on('afterMove', evt => {
@@ -100,3 +111,18 @@ pagination.on('afterMove', evt => {
 });
 
 getPopularMoviesData(1);
+
+// spinner.spin(document.body); // Pokazanie spinnera
+
+// async function myAsyncFunction() {
+//   // kod asynchroniczny
+// }
+
+// myAsyncFunction()
+//   .then(() => {
+//     spinner.stop(); // Ukrycie spinnera po zakończeniu działania funkcji
+//   })
+//   .catch(error => {
+//     console.error(error);
+//     spinner.stop(); // Ukrycie spinnera w przypadku błędu
+//   });
