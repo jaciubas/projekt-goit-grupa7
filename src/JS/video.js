@@ -40,7 +40,7 @@ const getMovieVideos = async movieId => {
     spinner.stop();
   }
 };
-// || e.target.closest('.modal__svg *')
+
 //Otwieranie video
 const openMovieVideo = e => {
   if (e.target.closest('.trailer__picture')) {
