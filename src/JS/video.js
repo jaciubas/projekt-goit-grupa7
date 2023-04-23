@@ -34,7 +34,7 @@ const getMovieVideos = async movieId => {
     console.log(error);
   }
 };
-// || e.target.closest('.modal__svg *')
+
 //Otwieranie video
 const openMovieVideo = e => {
   if (e.target.closest('.trailer__picture')) {
