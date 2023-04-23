@@ -5,3 +5,4 @@ import './JS/movies-container';
 import './JS/pagination';
 import './JS/movie-search';
 import './JS/video';
+import './JS/watched&queue';
