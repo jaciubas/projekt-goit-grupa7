@@ -1,3 +1,6 @@
+import { Spinner } from 'spin.js';
+import { npopts } from './spinner';
+
 const searchMoviesForm = document.querySelector('#form');
 const searchMovieInput = document.querySelector('#topSearch');
 const main = document.querySelector('main');
@@ -56,6 +59,7 @@ const searchIdForName = (data, arrayOfIds) => {
 
 const getGenresData = async arrayOfIds => {
   try {
+    loader.appendChild(spinner.el);
     const GENRES_PATH = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
     const response = await fetch(GENRES_PATH);
     const data = await response.json();
@@ -66,6 +70,8 @@ const getGenresData = async arrayOfIds => {
     }
   } catch (error) {
     console.log(error);
+  } finally {
+    spinner.stop();
   }
 };
 
@@ -77,3 +83,4 @@ searchMoviesForm.addEventListener('submit', e => {
     searchMovieInput.value = '';
   }
 });
+
