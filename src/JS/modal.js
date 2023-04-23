@@ -11,16 +11,17 @@ const movieTemplate = document.querySelector('.movie__template');
 const innerModal = document.querySelector('.modal_inner');
 
 console.log(main);
-
-async function onCloseModal() {
+function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
+
 }
 
 main.addEventListener('click', onShowModal);
 close.addEventListener('click', onCloseModal);
 
 async function onShowModal(e) {
+
   e.preventDefault();
   if (!e.target.classList.contains('movie__image')) {
     return;
@@ -30,6 +31,9 @@ async function onShowModal(e) {
     getMovie(selectedMovieId);
   }
 }
+
+main.addEventListener('click', onShowModal);
+close.addEventListener('click', onCloseModal);
 
 async function getMovie(movieId) {
   try {
