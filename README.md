@@ -2,10 +2,6 @@
 
 [Link do strony](https://jaciubas.github.io/projekt-goit-grupa7/)
 
-## Zalezności
-
-Na komputerze musi być zainstalowana LTS-wersja [Node.js](https://nodejs.org/en/).
-
 ## paczki użyte w projekcie
 
     axios v: ^1.3.6,
@@ -41,6 +37,8 @@ więcej z opisu filmu.
 ### Do projektu wykorzystaliśmy Parcel-project-template
 
 #### Uruchomienie
+
+Na komputerze musi być zainstalowana LTS-wersja [Node.js](https://nodejs.org/en/).
 
 Jeden raz na projekt zainstalować wszystkie zalezności.
 
