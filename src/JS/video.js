@@ -3,7 +3,7 @@ import { opts } from './spinner';
 const innerModal = document.querySelector('.modal_inner');
 const modalVideo = document.querySelector('.video_modal');
 const spinner = new Spinner(opts).spin();
-const loader = document.getElementById('loader');
+const loader = document.getElementById('video-loader');
 //video iframe
 const showVideoHTML = videoKey => {
   const iframe = `<iframe class="video_iframe"
@@ -36,7 +36,7 @@ const getMovieVideos = async movieId => {
     findVideoKey(movieVideos);
   } catch (error) {
     console.log(error);
-  }finally {
+  } finally {
     spinner.stop();
   }
 };

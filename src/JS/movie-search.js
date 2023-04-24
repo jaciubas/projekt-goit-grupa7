@@ -27,12 +27,22 @@ const getResults = async url => {
     console.log(error);
   }
 };
+
+const searchPoster = movie => {
+  let posterPath = movie.poster_path ? movie.poster_path : movie.backdrop_path;
+  if (posterPath === null) {
+    return (IMAGE_PATH =
+      'https://images.pexels.com/photos/5721902/pexels-photo-5721902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  } else {
+    return (IMAGE_PATH = `https://image.tmdb.org/t/p/original${posterPath}`);
+  }
+};
+
 const showResults = movies => {
   main.innerHTML = '';
   movies.forEach(async movie => {
-
     let { id, title, genres, year } = movie;
-    const IMAGE_PATH = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
+    let IMAGE_PATH = searchPoster(movie);
     const movieDate = movie.release_date ? movie.release_date : movie.first_air_date;
     year = new Date(movieDate).getFullYear();
     genres = await getGenresData(movie.genre_ids);
@@ -41,7 +51,7 @@ const showResults = movies => {
     const movieElement = document.createElement('div');
 
     movieElement.innerHTML = `<li class="movie__template">
-    <img class="movie__image" id="${id}" src="${IMAGE_PATH}" alt='${title}' width="280px" height="398px"/> 
+    <img class="movie__image" id="${id}" src="${IMAGE_PATH}" alt='${title}' loading="lazy" width="280px" height="398px"/> 
     <h5 class="movie__title">${title}</h5>
     <div class="movie__informations"><span>${genres}</span> | <span>${year}</span></div>
   </li>`;
