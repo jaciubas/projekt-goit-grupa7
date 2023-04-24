@@ -271,6 +271,44 @@
   color: #FF001B;
 }
 
+@keyframes spinner-line-fade-more {
+  0%, 100% {
+    opacity: 0;
+    /* minimum opacity */
+  }
+  1% {
+    opacity: 1;
+  }
+}
+@keyframes spinner-line-fade-quick {
+  0%, 39%, 100% {
+    opacity: 0.25;
+    /* minimum opacity */
+  }
+  40% {
+    opacity: 1;
+  }
+}
+@keyframes spinner-line-fade-default {
+  0%, 100% {
+    opacity: 0.22;
+    /* minimum opacity */
+  }
+  1% {
+    opacity: 1;
+  }
+}
+@keyframes spinner-line-shrink {
+  0%, 25%, 100% {
+    /* minimum scale and opacity */
+    transform: scale(0.5);
+    opacity: 0.25;
+  }
+  26% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 .movie__template {
   max-width: 280px;
   list-style: none;
@@ -375,6 +413,9 @@ footer .footer_text {
 footer .footer_text--underline {
   border-bottom: 1px solid #545454;
 }
+footer .footer_block {
+  text-align: center;
+}
 
 .container {
   max-width: 1280px;
@@ -460,6 +501,13 @@ footer .footer_text--underline {
     display: flex;
   }
 }
+.trailer__picture {
+  position: relative;
+}
+.trailer__picture:hover .modal__svg {
+  fill: #ff6b01;
+}
+
 .modal__img {
   width: 100%;
   height: 100%;
@@ -467,6 +515,21 @@ footer .footer_text--underline {
      object-fit: cover;
 }
 
+.modal__svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: #fff;
+  z-index: 1001;
+}
+
+@media screen and (min-width: 1200px) {
+  .modal__svg {
+    width: 100px;
+    height: 100px;
+  }
+}
 .modal__title {
   font-size: 20px;
   font-weight: 500;
@@ -620,6 +683,11 @@ footer .footer_text--underline {
 
 .modal__btn--watched {
   margin-right: 20px;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
 
 .video_modal {
@@ -837,5 +905,288 @@ footer .footer_text--underline {
     padding-bottom: 60px;
     flex-wrap: wrap;
     align-items: start;
+  }
+}
+
+#students-container {
+  position: fixed;
+  display: table;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transform: scale(0);
+  z-index: 1;
+  overflow-y: auto;
+}
+#students-container.appear {
+  transform: scaleY(0.01) scaleX(0);
+  animation: moveIn 2s cubic-bezier(0.2, 0.8, 0.5, 1) forwards;
+}
+#students-container.appear .students-background .students {
+  transform: scale(0);
+  animation: fadeIn 0.5s 0.8s cubic-bezier(0.2, 0.8, 0.5, 1) forwards;
+}
+#students-container.appear.disappear {
+  transform: scale(1);
+  animation: moveOut 2s 0.3s cubic-bezier(0.2, 0.8, 0.5, 1) forwards;
+}
+#students-container.appear.disappear .students-background .students {
+  animation: fadeOut 0.5s cubic-bezier(0.2, 0.8, 0.5, 1) forwards;
+}
+#students-container .students-background {
+  display: table-cell;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  vertical-align: middle;
+  overflow-y: auto;
+}
+#students-container .students-background .students {
+  max-width: 300px;
+  max-height: 95%;
+  background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
+  padding: 10px;
+  margin: auto;
+  display: block;
+  border-radius: 2px;
+  font-weight: 300;
+  position: relative;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  /*&-list {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }*/
+}
+#students-container .students-background .students h2 {
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.1em;
+  height: 80px;
+  font-family: Roboto;
+  font-size: 30px;
+  line-height: 25px;
+  margin-bottom: 15px;
+  color: black;
+  text-shadow: 2px 2px 4px black;
+}
+#students-container .students-background .students-picture {
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 25px;
+  width: 70px;
+  height: 70px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+#students-container .students-background .students-name {
+  font-family: roboto;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  color: rgb(32, 17, 76);
+  text-shadow: 1px 1px 2px white;
+}
+#students-container .students-background .students-name2 {
+  font-family: roboto;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgb(32, 17, 76);
+  text-shadow: 1px 1px 2px white;
+}
+#students-container .students-background .students_role {
+  font-family: roboto;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(67, 0, 94);
+}
+
+@keyframes moveIn {
+  0% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+}
+@keyframes moveOut {
+  0% {
+    transform: scaleY(1) scaleX(1);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@media screen and (min-width: 768px) {
+  #students-container .students-background {
+    display: table-cell;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    vertical-align: middle;
+  }
+  #students-container .students-background .students {
+    max-width: 700px;
+    background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 2px;
+    font-weight: 300;
+    position: relative;
+    overflow-y: auto;
+  }
+  #students-container .students-background .students h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.3em;
+    height: 100px;
+    font-size: 50px;
+    line-height: 25px;
+    margin-bottom: 15px;
+  }
+  #students-container .students-background .students-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  #students-container .students-background .students-list__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #students-container .students-background .students-picture {
+    border: 2px solid black;
+    border-radius: 25px;
+    width: 140px;
+    height: 140px;
+  }
+  #students-container .students-background .students-name {
+    margin-top: 5px;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 34px;
+    color: rgb(32, 17, 76);
+    text-shadow: 1px 1px 2px white;
+  }
+  #students-container .students-background .students-name2 {
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 24px;
+    color: rgb(32, 17, 76);
+    text-shadow: 1px 1px 2px white;
+  }
+  #students-container .students-background .students_role {
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(67, 0, 94);
+  }
+}
+@media screen and (min-width: 1200px) {
+  #students-container .students-background {
+    display: table-cell;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    vertical-align: middle;
+    overflow-y: auto;
+  }
+  #students-container .students-background .students {
+    max-width: 800px;
+    background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 2px;
+    font-weight: 300;
+    position: relative;
+    overflow-y: auto;
+  }
+  #students-container .students-background .students h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    font-size: 68px;
+    letter-spacing: 0.3em;
+    line-height: 25px;
+    margin-bottom: 15px;
+  }
+  #students-container .students-background .students-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  #students-container .students-background .students-list__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #students-container .students-background .students-picture {
+    border: 2px solid rgb(11, 98, 238);
+    border-radius: 20px;
+    width: 150px;
+    height: 150px;
+  }
+  #students-container .students-background .students-name {
+    margin-top: 5px;
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 32px;
+    color: rgb(32, 17, 76);
+    text-shadow: 1px 1px 2px white;
+  }
+  #students-container .students-background .students-name-name2 {
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 32px;
+    color: rgb(32, 17, 76);
+    text-shadow: 1px 1px 2px white;
+  }
+  #students-container .students-background .students-name_role {
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(67, 0, 94);
   }
 }/*# sourceMappingURL=main.css.map */
