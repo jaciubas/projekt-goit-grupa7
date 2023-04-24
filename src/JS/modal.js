@@ -17,7 +17,6 @@ function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
 
-
   document.body.classList.remove('stop-scrolling');
 }
 function onCloseModalEscKey(e) {
@@ -26,7 +25,6 @@ function onCloseModalEscKey(e) {
     modal.removeEventListener('click', onCloseModal);
     document.body.classList.remove('stop-scrolling');
   }
-
 }
 
 main.addEventListener('click', onShowModal);
@@ -131,21 +129,22 @@ async function getMovieAndUpdateUI(movie) {
 
 // KOD DOTYCZĄCY PODPIĘCIA WATCHED I QUEUE
 const movieIdForWatched = e => {
-  const id = e.currentTarget.dataset.id;
-  data1.setWatched(id);
+  const idMovie = e.currentTarget.dataset.id;
+  console.log(idMovie);
+  data1.setWatched(idMovie);
 };
 
 const movieIdForQueue = e => {
-  const id = e.currentTarget.dataset.id;
-  data1.setQueue(id);
+  const idMovie = e.currentTarget.dataset.id;
+  data1.setQueue(idMovie);
 };
 
-const queueBtn = document.querySelector('.modal__btn--queue');
+const queueBtn = document.querySelector('.addToQueueBtn');
 if (queueBtn) {
   queueBtn.addEventListener('click', movieIdForQueue);
 }
 
-const watchedBtn = document.querySelector('.modal__btn--watched');
+const watchedBtn = document.querySelector('.addToWatchedBtn');
 if (watchedBtn) {
   watchedBtn.addEventListener('click', movieIdForWatched);
 }

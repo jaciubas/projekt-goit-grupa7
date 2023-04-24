@@ -1,0 +1,32 @@
+import data1 from './watched&queue';
+import libraries from './movie-template';
+
+const watchedLibraryBtn = document.querySelector('.btn-watched');
+const queueLibraryBtn = document.querySelector('.btn-queue');
+
+const watchedMovies = async () => {
+  try {
+    const idFromMovies = data1.getWatched;
+    const moviesWatched = await libraries.getGenresData(idFromMovies);
+
+    libraries.createMainMovieTemplate(moviesWatched);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const queueMovies = async () => {
+  try {
+    const idFromMovies = data1.getQueue;
+    const moviesQueue = await libraries.getGenresData(idFromMovies);
+
+    libraries.createMainMovieTemplate(moviesQueue);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// ZAKOMENTOWANE PRZYCISKI, PONIEWAZ WARTOŚCI WYCHDZĄ "NULL" I DAJĘ BŁĄD
+
+// watchedLibraryBtn.addEventListener('click', watchedMovies);
+// queueLibraryBtn.addEventListener('click', queueMovies);

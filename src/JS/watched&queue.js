@@ -49,6 +49,7 @@ const setQueue = id => {
     Notiflix.Notify.info('You allready added this movie to queue.');
   } else {
     getQueue.push(id);
+    console.log(getQueue);
     try {
       addToQueue();
       Notiflix.Notify.success('Succesfully added to queue.');
