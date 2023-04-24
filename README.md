@@ -16,14 +16,21 @@ Na komputerze musi być zainstalowana LTS-wersja [Node.js](https://nodejs.org/en
 
 ## Uczestnicy projektu oraz ich role
 
-Jakub Jaciubek - TeamLider, [Profil Github](https://github.com/jaciubas) Izabela Malinowska - Scrum
-Master, [Profil Github](https://github.com/IzabelaMalinowska) Hania Kaczyńska - Developer,
-[Profil Github](https://github.com/hannakaczynska) Hanna Rogalska - Developer,
-[Profil Github](https://github.com/HannaRogalska) Emilia Szczepaniak - Developer,
-[Profil Github](https://github.com/Emiliasz11) Katarzyna Leoniuk - Developer,
-[Profil Github](https://github.com/katleon) Jakub Piłat - Developer,
-[Profil Github](https://github.com/kuba368) Kacper Madajewski - Developer,
-[Profil Github](https://github.com/KacperMadajewski)
+Jakub Jaciubek - TeamLider [Profil Github](https://github.com/jaciubas),
+
+Izabela Malinowska - Scrum Master [Profil Github](https://github.com/IzabelaMalinowska),
+
+Hania Kaczyńska - Developer [Profil Github](https://github.com/hannakaczynska),
+
+Hanna Rogalska - Developer [Profil Github](https://github.com/HannaRogalska),
+
+Emilia Szczepaniak - Developer [Profil Github](https://github.com/Emiliasz11),
+
+Katarzyna Leoniuk - Developer [Profil Github](https://github.com/katleon),
+
+Jakub Piłat - Developer [Profil Github](https://github.com/kuba368),
+
+Kacper Madajewski - Developer [Profil Github](https://github.com/KacperMadajewski)
 
 ### funkcjonalność aplikacij
 
@@ -31,4 +38,20 @@ aplikacja służy do wyszukiwania filmów , oraz daje urzytkownikowi możliwoś�
 "obejrzane" lub "do obejrzenia" dodatkowo może obejrzeć zwiastun danego filmu oraz dowiedzieć się
 więcej z opisu filmu.
 
-##### Do projektu wykorzystaliśmy Parcel-project-template
+### Do projektu wykorzystaliśmy Parcel-project-template
+
+#### Uruchomienie
+
+Jeden raz na projekt zainstalować wszystkie zalezności.
+
+```shell
+npm ci
+```
+
+#### Tryb pracy
+
+```shell
+npm run dev
+```
+
+w przeglądarce przejść na http://localhost:1234.
