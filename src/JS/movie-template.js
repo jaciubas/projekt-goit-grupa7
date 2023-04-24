@@ -8,7 +8,7 @@ const main = document.querySelector('main');
 const createMainMovieTemplateHTML = (image, id, title, genres, year) => {
   const twoGenres = genres && genres.length > 0 ? genres.slice(0, 2).join(', ') : '';
   return `<li class="movie__template">
-    <img class="movie__image" id="${id}" src="${image}" alt='${title}' width="280px" height="398px"/> 
+    <img class="movie__image" id="${id}" src="${image}" alt='${title}' loading="lazy" width="280px" height="398px"/> 
     <h5 class="movie__title">${title}</h5>
     <div class="movie__informations"><span>${twoGenres}</span> | <span>${year}</span></div>
   </li>`;
@@ -17,7 +17,9 @@ const createMainMovieTemplateHTML = (image, id, title, genres, year) => {
 const createMainMovieTemplate = async movies => {
   const moviesList = await Promise.all(
     movies.map(async movie => {
-      const image = movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : 'default-image-url';
+      const image = movie.poster_path
+        ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+        : 'default-image-url';
       const id = movie.id;
       const title = movie.title ? movie.title : movie.name;
       const movieDate = movie.release_date ? movie.release_date : movie.first_air_date;
@@ -92,9 +94,9 @@ const loader = document.getElementById('loader');
 //FETCH najpopularniejszych na dziś filmów
 export const getPopularMoviesData = async page => {
   if (spinner.el instanceof Node) {
-  loader.appendChild(spinner.el);
+    loader.appendChild(spinner.el);
   }
-  
+
   const url = `https://api.themoviedb.org/3/trending/all/day?api_key=28f50cf3f177782503c21b43af04c7bc&page=${page}`;
   try {
     const response = await fetch(url);
@@ -114,21 +116,6 @@ pagination.on('afterMove', evt => {
 });
 
 getPopularMoviesData(1);
-
-// spinner.spin(document.body); // Pokazanie spinnera
-
-// async function myAsyncFunction() {
-//   // kod asynchroniczny
-// }
-
-// myAsyncFunction()
-//   .then(() => {
-//     spinner.stop(); // Ukrycie spinnera po zakończeniu działania funkcji
-//   })
-//   .catch(error => {
-//     console.error(error);
-//     spinner.stop(); // Ukrycie spinnera w przypadku błędu
-//   });
 
 const libraries = {
   createMainMovieTemplateHTML,
