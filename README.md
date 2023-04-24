@@ -4,10 +4,8 @@
 
 ## paczki użyte w projekcie
 
-    axios v: ^1.3.6,
     notiflix v: ^3.2.6,
     spin.js v: ^4.1.1,
-    spinner v: ^0.3.4,
     tui-pagination v: 3.4.1
 
 ## Uczestnicy projektu oraz ich role
