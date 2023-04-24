@@ -5,19 +5,12 @@ const url =
 
 const close = document.querySelector('.close_modal_window');
 const modal = document.querySelector('.modal_window');
-
-console.log(modal);
-
 const main = document.querySelector('main');
-const movieTemplate = document.querySelector('.movie__template');
 const innerModal = document.querySelector('.modal_inner');
 
-console.log(main);
 function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
-
-  document.body.classList.remove('stop-scrolling');
 }
 function onCloseModalEscKey(e) {
   if (e.code === 'Escape') {
@@ -29,6 +22,8 @@ function onCloseModalEscKey(e) {
 
 main.addEventListener('click', onShowModal);
 close.addEventListener('click', onCloseModal);
+document.body.addEventListener('keydown', onCloseModalEscKey);
+document.body.addEventListener('click', onCloseModalClick);
 
 async function onShowModal(e) {
   e.preventDefault();
@@ -38,11 +33,19 @@ async function onShowModal(e) {
     modal.classList.remove('is-hidden');
     const selectedMovieId = e.target.id;
     getMovie(selectedMovieId);
+    document.body.classList.add('stop-scrolling');
   }
 }
 
-main.addEventListener('click', onShowModal);
-close.addEventListener('click', onCloseModal);
+function onCloseModalClick(e) {
+  if (e.target === modal) {
+    onCloseModal();
+    document.body.classList.remove('stop-scrolling');
+    modal.removeEventListener('click', onCloseModal);
+  }
+}
+
+
 
 async function getMovie(movieId) {
   try {
@@ -50,7 +53,6 @@ async function getMovie(movieId) {
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=28f50cf3f177782503c21b43af04c7bc`,
     );
     const movieInformation = await response.json();
-    console.log(movieInformation);
     getMovieAndUpdateUI(movieInformation);
   } catch (error) {
     console.log(error);
