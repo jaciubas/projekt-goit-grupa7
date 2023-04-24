@@ -17,7 +17,7 @@ const createMainMovieTemplateHTML = (image, id, title, genres, year) => {
 const createMainMovieTemplate = async movies => {
   const moviesList = await Promise.all(
     movies.map(async movie => {
-      const image = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
+      const image = movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : 'default-image-url';
       const id = movie.id;
       const title = movie.title ? movie.title : movie.name;
       const movieDate = movie.release_date ? movie.release_date : movie.first_air_date;
@@ -91,7 +91,10 @@ const loader = document.getElementById('loader');
 
 //FETCH najpopularniejszych na dziś filmów
 export const getPopularMoviesData = async page => {
+  if (spinner.el instanceof Node) {
   loader.appendChild(spinner.el);
+  }
+  
   const url = `https://api.themoviedb.org/3/trending/all/day?api_key=28f50cf3f177782503c21b43af04c7bc&page=${page}`;
   try {
     const response = await fetch(url);
