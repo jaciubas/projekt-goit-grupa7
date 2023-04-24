@@ -151,7 +151,7 @@
   }
 }
 
-//
+//Style Nav header
 
 .slider {
   &_nav {
@@ -196,6 +196,9 @@
       border-bottom: 3px solid red;
     }
   }
+
+  //Style search engine
+
   &_input {
     background-color: transparent;
     border: none;
@@ -227,6 +230,9 @@
     &:hover {
       cursor: pointer;
     }
+
+    //Logo Style
+
     &--image {
       position: absolute;
       left: 0;
@@ -307,5 +313,5 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  color: #FF001B;
+  color: #ff001b;
 }
