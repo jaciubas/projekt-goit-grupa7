@@ -1,7 +1,7 @@
 import { Spinner } from 'spin.js';
 import { opts } from './spinner';
 // import Pagination from 'tui-pagination';
-import pagination from './pagination';
+// import pagination from './pagination';
 
 const searchMoviesForm = document.querySelector('#form');
 const searchMovieInput = document.querySelector('#topSearch');
@@ -33,7 +33,7 @@ const getResults = async url => {
   } catch (error) {
     console.log(error);
   }
-  pagination.reset();
+  // pagination.reset();
 };
 
 const searchPoster = movie => {
@@ -95,6 +95,7 @@ const getGenresData = async arrayOfIds => {
 
 searchMoviesForm.addEventListener('submit', e => {
   e.preventDefault();
+  window.scroll(0, 0);
   const query = searchMovieInput.value;
   if (query) {
     getResults(SEARCH_API + query);
