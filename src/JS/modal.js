@@ -45,8 +45,6 @@ function onCloseModalClick(e) {
   }
 }
 
-
-
 async function getMovie(movieId) {
   try {
     const response = await fetch(
@@ -117,9 +115,13 @@ async function getMovieAndUpdateUI(movie) {
           <p class="modal__about">About</p>
           <p class="modal__text">${movie.overview}</p>
         </div>
-        <div class="modal__btn-box" data-id="${movie.id}">
-          <button class="modal__btn modal__btn--watched" type="button">Add to watched</button>
-          <button class="modal__btn modal__btn--queue" type="button">Add to queue</button>
+        <div class="modal__btn-box">
+          <button 
+          class="modal__btn modal__btn--watched" 
+          id="${movie.id}" type="button" >Add to watched</button>
+          <button 
+          class="modal__btn modal__btn--queue"
+          id="${movie.id}" type="button" >Add to queue</button>
         </div>
       </div>`;
 
@@ -130,23 +132,23 @@ async function getMovieAndUpdateUI(movie) {
 }
 
 // KOD DOTYCZĄCY PODPIĘCIA WATCHED I QUEUE
-const movieIdForWatched = e => {
-  const idMovie = e.currentTarget.dataset.id;
-  console.log(idMovie);
-  data1.setWatched(idMovie);
-};
+// const movieIdForWatched = e => {
+//   const idMovie = e.currentTarget.dataset.id;
+//   console.log(idMovie);
+//   data1.setWatched(idMovie);
+// };
 
-const movieIdForQueue = e => {
-  const idMovie = e.currentTarget.dataset.id;
-  data1.setQueue(idMovie);
-};
+// const movieIdForQueue = e => {
+//   const idMovie = e.currentTarget.dataset.id;
+//   data1.setQueue(idMovie);
+// };
 
-const queueBtn = document.querySelector('.addToQueueBtn');
-if (queueBtn) {
-  queueBtn.addEventListener('click', movieIdForQueue);
-}
+// const queueBtn = document.querySelector('.addToQueueBtn');
+// if (queueBtn) {
+//   queueBtn.addEventListener('click', movieIdForQueue);
+// }
 
-const watchedBtn = document.querySelector('.addToWatchedBtn');
-if (watchedBtn) {
-  watchedBtn.addEventListener('click', movieIdForWatched);
-}
+// const watchedBtn = document.querySelector('.addToWatchedBtn');
+// if (watchedBtn) {
+//   watchedBtn.addEventListener('click', movieIdForWatched);
+// }

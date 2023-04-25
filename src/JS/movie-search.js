@@ -31,10 +31,9 @@ const getResults = async url => {
 const searchPoster = movie => {
   let posterPath = movie.poster_path ? movie.poster_path : movie.backdrop_path;
   if (posterPath === null) {
-    return (IMAGE_PATH =
-      'https://images.pexels.com/photos/5721902/pexels-photo-5721902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    return 'https://images.pexels.com/photos/5721902/pexels-photo-5721902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
   } else {
-    return (IMAGE_PATH = `https://image.tmdb.org/t/p/original${posterPath}`);
+    return `https://image.tmdb.org/t/p/original${posterPath}`;
   }
 };
 
