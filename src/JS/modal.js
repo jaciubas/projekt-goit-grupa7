@@ -11,6 +11,7 @@ const innerModal = document.querySelector('.modal_inner');
 function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
+  document.body.classList.remove('stop-scrolling');
 }
 function onCloseModalEscKey(e) {
   if (e.code === 'Escape') {
@@ -118,8 +119,12 @@ async function getMovieAndUpdateUI(movie) {
           <p class="modal__text">${movie.overview}</p>
         </div>
         <div class="modal__btn-box" data-id="${movie.id}">
-          <button class="modal__btn modal__btn--watched" type="button">Add to watched</button>
-          <button class="modal__btn modal__btn--queue" type="button">Add to queue</button>
+          <button class="modal__btn modal__btn--watched" id="${
+            movie.id
+          }" type="button">Add to watched</button>
+          <button class="modal__btn modal__btn--queue" id="${
+            movie.id
+          }" type="button">Add to queue</button>
         </div>
       </div>`;
 
@@ -150,3 +155,8 @@ const watchedBtn = document.querySelector('.addToWatchedBtn');
 if (watchedBtn) {
   watchedBtn.addEventListener('click', movieIdForWatched);
 }
+
+
+
+
+
