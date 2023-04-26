@@ -11,6 +11,7 @@ const innerModal = document.querySelector('.modal_inner');
 function onCloseModal() {
   modal.classList.add('is-hidden');
   innerModal.innerHTML = '';
+  document.body.classList.remove('stop-scrolling');
 }
 function onCloseModalEscKey(e) {
   if (e.code === 'Escape') {
@@ -122,6 +123,7 @@ async function getMovieAndUpdateUI(movie) {
           <button 
           class="modal__btn modal__btn--queue"
           id="${movie.id}" type="button" >Add to queue</button>
+
         </div>
       </div>`;
 
@@ -152,3 +154,30 @@ async function getMovieAndUpdateUI(movie) {
 // if (watchedBtn) {
 //   watchedBtn.addEventListener('click', movieIdForWatched);
 // }
+
+const movieIdForWatched = e => {
+  const idMovie = e.currentTarget.dataset.id;
+  console.log(idMovie);
+  data1.setWatched(idMovie);
+};
+
+const movieIdForQueue = e => {
+  const idMovie = e.currentTarget.dataset.id;
+  data1.setQueue(idMovie);
+};
+
+const queueBtn = document.querySelector('.addToQueueBtn');
+if (queueBtn) {
+  queueBtn.addEventListener('click', movieIdForQueue);
+}
+
+const watchedBtn = document.querySelector('.addToWatchedBtn');
+if (watchedBtn) {
+  watchedBtn.addEventListener('click', movieIdForWatched);
+}
+
+
+
+
+
+
