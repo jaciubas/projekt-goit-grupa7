@@ -26,7 +26,7 @@ const options = {
 const pagination = new Pagination('pagination', options);
 
 pagination.on('afterMove', function (eventData) {
-  window.scroll(0, 0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   const currentPage = eventData.page;
   const startIndex = (currentPage - 1) * options.itemsPerPage;
   const endIndex = startIndex + options.itemsPerPage;

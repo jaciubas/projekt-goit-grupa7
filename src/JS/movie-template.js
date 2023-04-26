@@ -103,7 +103,7 @@ export const getPopularMoviesData = async page => {
     const data = await response.json();
     const popularMovies = await data.results;
     createMainMovieTemplate(popularMovies);
-    pagination.setCurrentPage(page);
+    pagination.getCurrentPage(page);
   } catch (error) {
     console.log(error);
   } finally {
