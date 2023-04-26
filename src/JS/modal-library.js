@@ -1,4 +1,5 @@
-// import data1 from './watched&queue';
+import Notiflix from 'notiflix';
+import { watched, queued } from './watched&queue';
 
 const url =
   'https://api.themoviedb.org/3/trending/all/week?api_key=28f50cf3f177782503c21b43af04c7bc';
@@ -7,6 +8,8 @@ const close = document.querySelector('.close_modal_window');
 const modal = document.querySelector('.modal_window');
 const main = document.querySelector('main');
 const innerModal = document.querySelector('.modal_inner');
+
+const modalLibrary = document.querySelector('.modal_content');
 
 function onCloseModal() {
   modal.classList.add('is-hidden');
@@ -118,11 +121,11 @@ async function getMovieAndUpdateUI(movie) {
         </div>
         <div class="modal__btn-box">
           <button 
-          class="modal__btn modal__btn--watched" 
-          id="${movie.id}" type="button" >Add to watched</button>
+          class="modal__btn modal__btn--removeWatched" 
+          id="${movie.id}" type="button" >Remove from watched</button>
           <button 
-          class="modal__btn modal__btn--queue"
-          id="${movie.id}" type="button" >Add to queue</button>
+          class="modal__btn modal__btn--removeQueued"
+          id="${movie.id}" type="button" >Remove from queue</button>
 
         </div>
       </div>`;
@@ -133,59 +136,45 @@ async function getMovieAndUpdateUI(movie) {
   }
 }
 
-// KOD DOTYCZĄCY PODPIĘCIA WATCHED I QUEUE
-// const movieIdForWatched = e => {
-//   const idMovie = e.currentTarget.dataset.id;
-//   console.log(idMovie);
-//   data1.setWatched(idMovie);
-// };
-
-// const movieIdForQueue = e => {
-//   const idMovie = e.currentTarget.dataset.id;
-//   data1.setQueue(idMovie);
-// };
-
-// const queueBtn = document.querySelector('.addToQueueBtn');
-// if (queueBtn) {
-//   queueBtn.addEventListener('click', movieIdForQueue);
-// }
-
-// const watchedBtn = document.querySelector('.addToWatchedBtn');
-// if (watchedBtn) {
-//   watchedBtn.addEventListener('click', movieIdForWatched);
-// }
-
-
-
-
-
-
-
-// NIE POTRZEBNY KOD CHYBA!!!!!!
-
-const movieIdForWatched = e => {
-  const idMovie = e.currentTarget.dataset.id;
-  console.log(idMovie);
-  data1.setWatched(idMovie);
+const removeFromWatched = id => {
+  if (!watched.includes(id)) {
+    return;
+  } else {
+    const index2 = watched.indexOf(id);
+    const removeWatched = watched.splice(index2, 1);
+    console.log(watched);
+    try {
+      localStorage.removeItem(id);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
 };
 
-const movieIdForQueue = e => {
-  const idMovie = e.currentTarget.dataset.id;
-  data1.setQueue(idMovie);
+const removeFromQueue = id => {
+  console.log(localStorage);
+  try {
+    const data = localStorage.getItem(id);
+    const data2 = data === null ? undefined : JSON.parse(data);
+      localStorage.removeItem(data2);
+      console.log(localStorage);
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
-const queueBtn = document.querySelector('.addToQueueBtn');
-if (queueBtn) {
-  queueBtn.addEventListener('click', movieIdForQueue);
-}
+const removeFromLocalStorage = e => {
+  const movieId = e.target.id;
+  if (e.target.classList.contains('modal__btn--removeWatched')) {
+    removeFromWatched(movieId);
+    Notiflix.Notify.success('Succesfully removed from watched.');
+  } else if (e.target.classList.contains('modal__btn--removeQueued')) {
+    removeFromQueue(movieId);
+    Notiflix.Notify.success('Succesfully removed from queue.');
+  } else {
+    Notiflix.Notify.failure('Something went wrong. Please, try again later.');
+    return;
+  }
+};
 
-const watchedBtn = document.querySelector('.addToWatchedBtn');
-if (watchedBtn) {
-  watchedBtn.addEventListener('click', movieIdForWatched);
-}
-
-
-
-
-
-
+modalLibrary.addEventListener('click', removeFromLocalStorage);
