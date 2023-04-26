@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { watched, queued } from './watched&queue';
+import { watched, queued, saveWatched, saveQueued } from './watched&queue';
 
 const url =
   'https://api.themoviedb.org/3/trending/all/week?api_key=28f50cf3f177782503c21b43af04c7bc';
@@ -138,28 +138,33 @@ async function getMovieAndUpdateUI(movie) {
 
 const removeFromWatched = id => {
   if (!watched.includes(id)) {
-    return;
+    Notiflix.Notify.info('You allready removed this movie from watched.');
   } else {
-    const index2 = watched.indexOf(id);
-    const removeWatched = watched.splice(index2, 1);
-    console.log(watched);
+    const index = watched.indexOf(id);
+    watched.splice(index, 1);
     try {
-      localStorage.removeItem(id);
+      saveWatched();
+      Notiflix.Notify.success('Succesfully removed from watched.');
     } catch (error) {
       console.error(error.message);
+      Notiflix.Notify.failure('Something went wrong. Please, try again later.');
     }
   }
 };
 
 const removeFromQueue = id => {
-  console.log(localStorage);
-  try {
-    const data = localStorage.getItem(id);
-    const data2 = data === null ? undefined : JSON.parse(data);
-      localStorage.removeItem(data2);
-      console.log(localStorage);
-  } catch (error) {
-    console.error(error.message);
+  if (!queued.includes(id)) {
+    Notiflix.Notify.info('You allready removed this movie from queued.');
+  } else {
+    const index = queued.indexOf(id);
+    queued.splice(index, 1);
+    try {
+      saveQueued();
+      Notiflix.Notify.success('Succesfully removed from watched.');
+    } catch (error) {
+      console.error(error.message);
+      Notiflix.Notify.failure('Something went wrong. Please, try again later.');
+    }
   }
 };
 
@@ -167,12 +172,9 @@ const removeFromLocalStorage = e => {
   const movieId = e.target.id;
   if (e.target.classList.contains('modal__btn--removeWatched')) {
     removeFromWatched(movieId);
-    Notiflix.Notify.success('Succesfully removed from watched.');
   } else if (e.target.classList.contains('modal__btn--removeQueued')) {
     removeFromQueue(movieId);
-    Notiflix.Notify.success('Succesfully removed from queue.');
   } else {
-    Notiflix.Notify.failure('Something went wrong. Please, try again later.');
     return;
   }
 };

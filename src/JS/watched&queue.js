@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 
 const modal = document.querySelector('.modal_content');
 
-const watchedKey = 'watched';
+export const watchedKey = 'watched';
 const queueKey = 'queue';
 
 //LOCAL STORAGE
@@ -28,8 +28,8 @@ const loadFromLocalStorage = key => {
 export const watched = loadFromLocalStorage(watchedKey) || [];
 export const queued = loadFromLocalStorage(queueKey) || [];
 
-const saveWatched = () => saveToLocalStorage(watchedKey, watched);
-const saveQueued = () => saveToLocalStorage(queueKey, queued);
+export const saveWatched = () => saveToLocalStorage(watchedKey, watched);
+export const saveQueued = () => saveToLocalStorage(queueKey, queued);
 
 //KLIKANIE W BUTTONY
 const setWatched = id => {
@@ -37,9 +37,12 @@ const setWatched = id => {
     Notiflix.Notify.info('You allready added this movie to watched.');
     return;
   } else {
+    console.log(localStorage);
     watched.push(id);
+    console.log(localStorage);
     try {
       saveWatched();
+      console.log(localStorage);
       Notiflix.Notify.success('Succesfully added to watched.');
     } catch (error) {
       console.error(error.message);
