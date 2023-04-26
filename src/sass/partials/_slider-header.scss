@@ -180,16 +180,26 @@
       color: #fff;
       text-decoration: none;
       cursor: pointer;
+      transition: font-size 0.5s 0.1s;
       &:hover {
         border-bottom: 3px solid red;
+        font-size: 16px;
+      }
+      &:focus {
+        font-size: 16px;
       }
     }
     &--libary {
       color: #fff;
       text-decoration: none;
       cursor: pointer;
+      transition: font-size 0.5s 0.1s;
       &:hover {
         border-bottom: 3px solid red;
+        font-size: 16px;
+      }
+      &:focus{
+        font-size: 16px;
       }
     }
     .underline-nav {
@@ -246,6 +256,7 @@
     height: 24px;
     width: 24px;
     cursor: pointer;
+    
   }
   &_logo-block {
     display: flex;
@@ -253,12 +264,27 @@
   }
   &_logo-link {
     display: flex;
+    animation: animLogo 10s linear 3s infinite normal both;
   }
   .slider-nav-logo {
     display: flex;
     justify-content: space-around;
     flex-direction: row-reverse;
   }
+}
+
+@keyframes animLogo {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.5);
+	}
+
+	100% {
+		transform: scale(1);
+	}
 }
 
 @media screen and (min-width: 768px) {
