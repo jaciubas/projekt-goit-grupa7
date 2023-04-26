@@ -41,7 +41,7 @@ searchErrorMsg.classList.add('is-hidden');
 //   getSearchData(e.page);
 // });
 
-const getResults = async page => {
+const getResults = async url => {
   try {
     const response = await fetch(url);
     const data = await response.json();
