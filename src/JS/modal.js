@@ -1,4 +1,4 @@
-import data1 from './watched&queue';
+// import data1 from './watched&queue';
 
 const url =
   'https://api.themoviedb.org/3/trending/all/week?api_key=28f50cf3f177782503c21b43af04c7bc';
