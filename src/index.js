@@ -7,3 +7,4 @@ import './JS/movie-search';
 import './JS/video';
 import './JS/watched&queue';
 import './JS/students-modal';
+import './JS/spinner';
