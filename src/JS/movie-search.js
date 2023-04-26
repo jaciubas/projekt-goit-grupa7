@@ -1,13 +1,13 @@
 import { Spinner } from 'spin.js';
 import { opts } from './spinner';
-// import Pagination from 'tui-pagination';
-// import pagination from './pagination';
+import pagination from './pagination';
 
 const searchMoviesForm = document.querySelector('#form');
 const searchMovieInput = document.querySelector('#topSearch');
 const main = document.querySelector('main');
 const searchErrorMsg = document.querySelector('.error-msg');
 const paginationTemplate = document.querySelector('#pagination');
+// const paginationButtons = document.querySelector('.tui-is-selected');
 
 let page = 1;
 const API_KEY = '28f50cf3f177782503c21b43af04c7bc';
@@ -18,12 +18,37 @@ const loader = document.getElementById('loader');
 
 searchErrorMsg.classList.add('is-hidden');
 
-const getResults = async url => {
+// const getSearchData = async page => {
+//   if (spinner.el instanceof Node) {
+//     loader.appendChild(spinner.el);
+//   }
+
+//   const url = SEARCH_API;
+//   try {
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     const searchedMovies = await data.results;
+//     createMainMovieTemplate(searchedMovies);
+//     pagination.getCurrentPage(page);
+//   } catch (error) {
+//     console.log(error);
+//   } finally {
+//     spinner.stop();
+//   }
+// };
+
+// pagination.on('afterMove', e => {
+//   getSearchData(e.page);
+// });
+
+const getResults = async page => {
   try {
     const response = await fetch(url);
     const data = await response.json();
     showResults(data.results);
     getGenresData(data.genres);
+    pagination.reset();
+
     if (data.results.length === 0) {
       searchErrorMsg.classList.remove('is-hidden');
       main.innerHTML = '';
@@ -33,7 +58,6 @@ const getResults = async url => {
   } catch (error) {
     console.log(error);
   }
-  // pagination.reset();
 };
 
 const searchPoster = movie => {
@@ -95,10 +119,14 @@ const getGenresData = async arrayOfIds => {
 
 searchMoviesForm.addEventListener('submit', e => {
   e.preventDefault();
-  window.scroll(0, 0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   const query = searchMovieInput.value;
   if (query) {
     getResults(SEARCH_API + query);
     searchMovieInput.value = '';
   }
+});
+
+pagination.on('afterMove', e => {
+  getResults(e.page);
 });

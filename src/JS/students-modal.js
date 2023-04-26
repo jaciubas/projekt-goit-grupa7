@@ -13,7 +13,7 @@ function closeModal() {
   setTimeout(() => {
     modalContainer.classList.remove('appear');
     modalContainer.classList.remove('disappear');
-  }, 1500);
+  }, 1000);
 }
 
 

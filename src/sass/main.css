@@ -437,6 +437,7 @@ footer {
 }
 footer .footer_text {
   color: #545454;
+  cursor: pointer;
 }
 footer .footer_text--underline {
   border-bottom: 1px solid #545454;
@@ -937,15 +938,14 @@ footer .footer_block {
 }
 
 #students-container {
-  position: fixed;
-  display: table;
-  height: 100%;
+  height: 95%;
   width: 100%;
   top: 0;
   left: 0;
+  position: fixed;
+  display: table;
   transform: scale(0);
   z-index: 1;
-  overflow-y: auto;
 }
 #students-container.appear {
   transform: scaleY(0.01) scaleX(0);
@@ -964,55 +964,45 @@ footer .footer_block {
 }
 #students-container .students-background {
   display: table-cell;
-  background: rgba(0, 0, 0, 0.7);
   text-align: center;
   vertical-align: middle;
-  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.7);
 }
 #students-container .students-background .students {
   max-width: 300px;
   max-height: 95%;
-  background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
   padding: 10px;
   margin: auto;
   display: block;
   border-radius: 2px;
   font-weight: 300;
   position: relative;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-  /*&-list {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      justify-content: center;
-      &__item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-    }*/
+  background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12), 0px 2px 3px rgba(0, 0, 0, 0.14), 0px 2px 3px rgba(0, 0, 0, 0.2);
 }
 #students-container .students-background .students h2 {
-  margin-top: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  letter-spacing: 0.1em;
+  margin-top: 2px;
+  margin-bottom: 15px;
   height: 80px;
   font-family: Roboto;
   font-size: 30px;
   line-height: 25px;
-  margin-bottom: 15px;
+  letter-spacing: 0.1em;
   color: black;
   text-shadow: 2px 2px 4px black;
 }
+#students-container .students-background .students-logo {
+  width: 200px;
+  height: 200px;
+}
 #students-container .students-background .students-picture {
-  border: 3px solid rgb(0, 0, 0);
-  border-radius: 25px;
   width: 70px;
   height: 70px;
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 25px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 #students-container .students-background .students-name {
@@ -1035,7 +1025,7 @@ footer .footer_block {
   font-family: roboto;
   font-weight: bold;
   font-size: 20px;
-  color: rgb(67, 0, 94);
+  color: black;
 }
 
 @keyframes moveIn {
@@ -1079,13 +1069,12 @@ footer .footer_block {
 @media screen and (min-width: 768px) {
   #students-container .students-background {
     display: table-cell;
-    background: rgba(0, 0, 0, 0.7);
     text-align: center;
     vertical-align: middle;
+    background: rgba(0, 0, 0, 0.7);
   }
   #students-container .students-background .students {
-    max-width: 700px;
-    background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
+    max-width: 750px;
     padding: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -1093,7 +1082,8 @@ footer .footer_block {
     border-radius: 2px;
     font-weight: 300;
     position: relative;
-    overflow-y: auto;
+    background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12), 0px 2px 3px rgba(0, 0, 0, 0.14), 0px 2px 3px rgba(0, 0, 0, 0.2);
   }
   #students-container .students-background .students h2 {
     display: flex;
@@ -1103,7 +1093,10 @@ footer .footer_block {
     height: 100px;
     font-size: 50px;
     line-height: 25px;
-    margin-bottom: 15px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    color: black;
+    text-shadow: 2px 2px 4px black;
   }
   #students-container .students-background .students-list {
     display: flex;
@@ -1116,11 +1109,15 @@ footer .footer_block {
     justify-content: center;
     align-items: center;
   }
+  #students-container .students-background .students-logo {
+    width: 200px;
+    height: 200px;
+  }
   #students-container .students-background .students-picture {
-    border: 2px solid black;
-    border-radius: 25px;
     width: 140px;
     height: 140px;
+    border: 2px solid black;
+    border-radius: 10px;
   }
   #students-container .students-background .students-name {
     margin-top: 5px;
@@ -1142,20 +1139,18 @@ footer .footer_block {
     font-family: roboto;
     font-weight: bold;
     font-size: 20px;
-    color: rgb(67, 0, 94);
+    color: black;
   }
 }
 @media screen and (min-width: 1200px) {
   #students-container .students-background {
     display: table-cell;
-    background: rgba(0, 0, 0, 0.7);
     text-align: center;
     vertical-align: middle;
-    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.7);
   }
   #students-container .students-background .students {
-    max-width: 800px;
-    background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
+    max-width: 850px;
     padding: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -1163,7 +1158,8 @@ footer .footer_block {
     border-radius: 2px;
     font-weight: 300;
     position: relative;
-    overflow-y: auto;
+    background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12), 0px 2px 3px rgba(0, 0, 0, 0.14), 0px 2px 3px rgba(0, 0, 0, 0.2);
   }
   #students-container .students-background .students h2 {
     display: flex;
@@ -1173,14 +1169,20 @@ footer .footer_block {
     font-size: 68px;
     letter-spacing: 0.3em;
     line-height: 25px;
+    margin-top: 2px;
     margin-bottom: 15px;
+    color: black;
+    text-shadow: 2px 2px 4px black;
   }
   #students-container .students-background .students-list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px;
+    padding-left: 30px;
+    padding-right: 30px;
+    -moz-column-gap: 70px;
+         column-gap: 70px;
   }
   #students-container .students-background .students-list__item {
     display: flex;
@@ -1188,33 +1190,37 @@ footer .footer_block {
     justify-content: center;
     align-items: center;
   }
+  #students-container .students-background .students-logo {
+    width: 200px;
+    height: 200px;
+  }
   #students-container .students-background .students-picture {
-    border: 2px solid rgb(11, 98, 238);
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
     border-radius: 20px;
-    width: 150px;
-    height: 150px;
   }
   #students-container .students-background .students-name {
     margin-top: 5px;
     font-family: roboto;
     font-weight: bold;
-    font-size: 34px;
-    line-height: 32px;
+    font-size: 24px;
+    line-height: 20px;
     color: rgb(32, 17, 76);
     text-shadow: 1px 1px 2px white;
   }
-  #students-container .students-background .students-name-name2 {
-    font-family: roboto;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 32px;
-    color: rgb(32, 17, 76);
-    text-shadow: 1px 1px 2px white;
-  }
-  #students-container .students-background .students-name_role {
+  #students-container .students-background .students-name2 {
     font-family: roboto;
     font-weight: bold;
     font-size: 20px;
-    color: rgb(67, 0, 94);
+    line-height: 20px;
+    color: rgb(32, 17, 76);
+    text-shadow: 1px 1px 2px white;
+  }
+  #students-container .students-background .students_role {
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
   }
 }/*# sourceMappingURL=main.css.map */
