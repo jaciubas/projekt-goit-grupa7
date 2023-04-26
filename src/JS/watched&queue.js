@@ -25,8 +25,8 @@ const loadFromLocalStorage = key => {
   }
 };
 
-const watched = loadFromLocalStorage(watchedKey) || [];
-const queued = loadFromLocalStorage(queueKey) || [];
+export const watched = loadFromLocalStorage(watchedKey) || [];
+export const queued = loadFromLocalStorage(queueKey) || [];
 
 const saveWatched = () => saveToLocalStorage(watchedKey, watched);
 const saveQueued = () => saveToLocalStorage(queueKey, queued);
