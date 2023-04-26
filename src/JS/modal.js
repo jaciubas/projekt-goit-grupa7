@@ -133,33 +133,6 @@ async function getMovieAndUpdateUI(movie) {
   }
 }
 
-// KOD DOTYCZĄCY PODPIĘCIA WATCHED I QUEUE
-// const movieIdForWatched = e => {
-//   const idMovie = e.currentTarget.dataset.id;
-//   console.log(idMovie);
-//   data1.setWatched(idMovie);
-// };
-
-// const movieIdForQueue = e => {
-//   const idMovie = e.currentTarget.dataset.id;
-//   data1.setQueue(idMovie);
-// };
-
-// const queueBtn = document.querySelector('.addToQueueBtn');
-// if (queueBtn) {
-//   queueBtn.addEventListener('click', movieIdForQueue);
-// }
-
-// const watchedBtn = document.querySelector('.addToWatchedBtn');
-// if (watchedBtn) {
-//   watchedBtn.addEventListener('click', movieIdForWatched);
-// }
-
-
-
-
-
-
 
 // NIE POTRZEBNY KOD CHYBA!!!!!!
 
@@ -183,9 +156,3 @@ const watchedBtn = document.querySelector('.addToWatchedBtn');
 if (watchedBtn) {
   watchedBtn.addEventListener('click', movieIdForWatched);
 }
-
-
-
-
-
-
