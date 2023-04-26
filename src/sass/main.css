@@ -1223,4 +1223,37 @@ footer .footer_block {
     font-size: 20px;
     color: black;
   }
+}
+.library {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .library {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-top: 59px;
+    padding-bottom: 40px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .library {
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+    row-gap: 32px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    flex-wrap: wrap;
+    align-items: start;
+  }
 }/*# sourceMappingURL=main.css.map */
