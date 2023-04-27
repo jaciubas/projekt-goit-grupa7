@@ -1,13 +1,13 @@
 #students-container {
-    height: 95%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    display: table;
-    transform: scale(0);
-    z-index: 1;
-  
+  height: 95%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: table;
+  transform: scale(0);
+  z-index: 1;
+
   &.appear {
     transform: scaleY(0.01) scaleX(0);
     animation: moveIn 2s cubic-bezier(0.2, 0.8, 0.5, 1) forwards;
@@ -33,7 +33,7 @@
     text-align: center;
     vertical-align: middle;
     background: rgba(0, 0, 0, 0.7);
-   
+
     .students {
       max-width: 300px;
       max-height: 95%;
@@ -44,8 +44,8 @@
       font-weight: 300;
       position: relative;
       background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
-      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12), 0px 2px 3px rgba(0, 0, 0, 0.14), 0px 2px 3px rgba(0, 0, 0, 0.2);
-      //overflow-y: auto;
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12), 0px 2px 3px rgba(0, 0, 0, 0.14),
+        0px 2px 3px rgba(0, 0, 0, 0.2);
 
       h2 {
         display: flex;
@@ -60,19 +60,19 @@
         letter-spacing: 0.1em;
         color: black;
         text-shadow: 2px 2px 4px black;
-
       }
-      &-logo{
+      &-logo {
         width: 200px;
-        height: 200px;   
-      }  
+        height: 200px;
+      }
       &-picture {
         width: 70px;
         height: 70px;
         border: 3px solid rgb(0, 0, 0);
         border-radius: 25px;
-        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-    }
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+          0px 2px 1px rgba(0, 0, 0, 0.2);
+      }
       &-name {
         font-family: roboto;
         font-weight: bold;
@@ -90,11 +90,11 @@
         text-shadow: 1px 1px 2px white;
       }
       &_role {
-          font-family: roboto;
-          font-weight: bold;
-          font-size: 20px;
-          color: black;
-          }
+        font-family: roboto;
+        font-weight: bold;
+        font-size: 20px;
+        color: black;
+      }
     }
   }
 }
@@ -141,10 +141,10 @@
 @media screen and (min-width: 768px) {
   #students-container {
     .students-background {
-        display: table-cell;
-        text-align: center;
-        vertical-align: middle;
-        background: rgba(0, 0, 0, 0.7);
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      background: rgba(0, 0, 0, 0.7);
       .students {
         max-width: 750px;
         padding: 10px;
@@ -155,9 +155,9 @@
         font-weight: 300;
         position: relative;
         background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
-        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12), 0px 2px 3px rgba(0, 0, 0, 0.14), 0px 2px 3px rgba(0, 0, 0, 0.2);
-        //overflow-y: auto;
-        
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12), 0px 2px 3px rgba(0, 0, 0, 0.14),
+          0px 2px 3px rgba(0, 0, 0, 0.2);
+
         h2 {
           display: flex;
           align-items: center;
@@ -182,16 +182,15 @@
             align-items: center;
           }
         }
-        &-logo{
-        width: 200px;
-        height: 200px;
-      }  
+        &-logo {
+          width: 200px;
+          height: 200px;
+        }
         &-picture {
-            width: 140px;
+          width: 140px;
           height: 140px;
           border: 2px solid black;
           border-radius: 10px;
-          
         }
         &-name {
           margin-top: 5px;
@@ -203,18 +202,18 @@
         }
         &-name2 {
           font-family: roboto;
-        font-weight: bold;
-        font-size: 30px;
-        line-height: 24px;
-        color: rgb(32, 17, 76);
-        text-shadow: 1px 1px 2px white;
+          font-weight: bold;
+          font-size: 30px;
+          line-height: 24px;
+          color: rgb(32, 17, 76);
+          text-shadow: 1px 1px 2px white;
         }
         &_role {
           font-family: roboto;
           font-weight: bold;
           font-size: 20px;
           color: black;
-          }
+        }
       }
     }
   }
@@ -236,8 +235,8 @@
         font-weight: 300;
         position: relative;
         background: linear-gradient(rgb(218, 218, 219), rgb(52, 52, 81));
-        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12), 0px 2px 3px rgba(0, 0, 0, 0.14), 0px 2px 3px rgba(0, 0, 0, 0.2);
-        //overflow-y: auto;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12), 0px 2px 3px rgba(0, 0, 0, 0.14),
+          0px 2px 3px rgba(0, 0, 0, 0.2);
 
         h2 {
           display: flex;
@@ -267,27 +266,26 @@
             align-items: center;
           }
         }
-        &-logo{
-        width: 200px;
-        height: 200px;
-      }  
+        &-logo {
+          width: 200px;
+          height: 200px;
+        }
         &-picture {
-            width: 100px;
+          width: 100px;
           height: 100px;
           border: 2px solid black;
           border-radius: 20px;
-          
         }
         &-name {
           margin-top: 5px;
-          font-family: roboto;;
+          font-family: roboto;
           font-weight: bold;
           font-size: 24px;
           line-height: 20px;
           color: rgb(32, 17, 76);
           text-shadow: 1px 1px 2px white;
         }
-          &-name2 {
+        &-name2 {
           font-family: roboto;
           font-weight: bold;
           font-size: 20px;
@@ -300,9 +298,8 @@
           font-weight: bold;
           font-size: 20px;
           color: black;
-          }
         }
       }
     }
   }
-
+}
