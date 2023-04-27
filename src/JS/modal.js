@@ -1,8 +1,3 @@
-// import data1 from './watched&queue';
-
-const url =
-  'https://api.themoviedb.org/3/trending/all/week?api_key=28f50cf3f177782503c21b43af04c7bc';
-
 const close = document.querySelector('.close_modal_window');
 const modal = document.querySelector('.modal_window');
 const main = document.querySelector('main');
@@ -131,28 +126,4 @@ async function getMovieAndUpdateUI(movie) {
   } catch (e) {
     console.log(e);
   }
-}
-
-
-// NIE POTRZEBNY KOD CHYBA!!!!!!
-
-const movieIdForWatched = e => {
-  const idMovie = e.currentTarget.dataset.id;
-  console.log(idMovie);
-  data1.setWatched(idMovie);
-};
-
-const movieIdForQueue = e => {
-  const idMovie = e.currentTarget.dataset.id;
-  data1.setQueue(idMovie);
-};
-
-const queueBtn = document.querySelector('.addToQueueBtn');
-if (queueBtn) {
-  queueBtn.addEventListener('click', movieIdForQueue);
-}
-
-const watchedBtn = document.querySelector('.addToWatchedBtn');
-if (watchedBtn) {
-  watchedBtn.addEventListener('click', movieIdForWatched);
 }

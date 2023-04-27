@@ -15,4 +15,3 @@ function closeModal() {
     modalContainer.classList.remove('disappear');
   }, 1000);
 }
-
