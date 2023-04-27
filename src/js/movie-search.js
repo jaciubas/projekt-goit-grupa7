@@ -1,21 +1,40 @@
 import { Spinner } from 'spin.js';
 import { opts } from './spinner';
-import Pagination from 'tui-pagination';
-import axios from 'axios';
+import pagination from './pagination';
 
-const searchMoviesForm = document.querySelector('form');
+const searchMoviesForm = document.querySelector('#form');
+const searchMovieInput = document.querySelector('#topSearch');
 const main = document.querySelector('main');
 const searchErrorMsg = document.querySelector('.error-msg');
 const paginationTemplate = document.querySelector('#pagination');
 
-let query;
+let page = 1;
 const API_KEY = '28f50cf3f177782503c21b43af04c7bc';
-const VISIBLE_PAGES = 5;
+const SEARCH_API = `https://api.themoviedb.org/3/search/movie?&api_key=${API_KEY}&page=${page}&query=`;
 
 const spinner = new Spinner(opts).spin();
 const loader = document.getElementById('loader');
 
 searchErrorMsg.classList.add('is-hidden');
+
+const getResults = async url => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    showResults(data.results);
+    getGenresData(data.genres);
+    pagination.reset();
+
+    if (data.results.length === 0) {
+      searchErrorMsg.classList.remove('is-hidden');
+      main.innerHTML = '';
+      paginationTemplate.classList.add('is-hidden');
+      return;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const searchPoster = movie => {
   let posterPath = movie.poster_path ? movie.poster_path : movie.backdrop_path;
@@ -24,6 +43,27 @@ const searchPoster = movie => {
   } else {
     return `https://image.tmdb.org/t/p/original${posterPath}`;
   }
+};
+
+const showResults = movies => {
+  main.innerHTML = '';
+  movies.forEach(async movie => {
+    let { id, title, genres, year } = movie;
+    let IMAGE_PATH = searchPoster(movie);
+    const movieDate = movie.release_date ? movie.release_date : movie.first_air_date;
+    year = new Date(movieDate).getFullYear();
+    genres = await getGenresData(movie.genre_ids);
+    id = movie.id;
+
+    const movieElement = document.createElement('div');
+
+    movieElement.innerHTML = `<li class="movie__template">
+    <img class="movie__image" id="${id}" src="${IMAGE_PATH}" alt='${title}' loading="lazy" width="280px" height="398px"/> 
+    <h5 class="movie__title">${title}</h5>
+    <div class="movie__informations"><span>${genres}</span> | <span>${year}</span></div>
+  </li>`;
+    main.appendChild(movieElement);
+  });
 };
 
 const searchIdForName = (data, arrayOfIds) => {
@@ -36,119 +76,35 @@ const searchIdForName = (data, arrayOfIds) => {
 };
 
 const getGenresData = async arrayOfIds => {
+  loader.append(spinner.el);
   try {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`,
-    );
+    const GENRES_PATH = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
+    const response = await fetch(GENRES_PATH);
     const data = await response.json();
     const genresData = await data.genres;
+    loader.remove(spinner.el);
     if (arrayOfIds) {
       const names = searchIdForName(genresData, arrayOfIds);
       return names;
     }
   } catch (error) {
     console.log(error);
+  } finally {
+    spinner.stop();
   }
 };
 
-const getResults = async (query, page) => {
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`;
-  return await axios
-    .get(url)
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => console.log(error));
-};
-
-function createPagination(totalItems, visiblePages) {
-  const options = {
-    itemsPerPage: 20,
-    totalItems: totalItems,
-    visiblePages: VISIBLE_PAGES,
-    template: {
-      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-      currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-      moveButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</a>',
-      disabledMoveButton:
-        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</span>',
-      moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' + '<span>⋅⋅⋅</span>' + '</a>',
-    },
-  };
-  const pagination = new Pagination(paginationTemplate, options);
-
-  if (visiblePages > 1) {
-    paginationTemplate.classList.remove('is-hidden');
-  } else {
-    paginationTemplate.classList.add('is-hidden');
-  }
-
-  return pagination;
-}
-
-const showResults = movies => {
-  return movies
-    .map(movie => {
-      let { id, genres, title, year } = movie;
-      genres = getGenresData(movie.genre_ids);
-      const movieDate = movie.release_date ? movie.release_date : movie.first_air_date;
-      year = new Date(movieDate).getFullYear();
-      poster = searchPoster(movie);
-      id = movie.id;
-
-      return `<li class="movie__template">
-          <img class="movie__image" id="${id}" src="${poster}" alt='${title}' loading="lazy" width="280px" height="398px"/>
-          <h5 class="movie__title">${title}</h5>
-          <div class="movie__informations"><span>${genres}</span> | <span>${year}</span></div>
-        </li>`;
-    })
-    .join('');
-};
-
-const onSearch = e => {
+searchMoviesForm.addEventListener('submit', e => {
   e.preventDefault();
-  query = e.target.search.value.trim();
-  let page = 1;
-  searchErrorMsg.textContent = '';
-  if (!query) {
-    setTimeout(() => {
-      searchErrorMsg.classList.add('is-hidden');
-    }, 5000);
-    searchErrorMsg.classList.remove('is-hidden');
-    searchErrorMsg.textContent = 'Search query is empty. Enter the correct movie name.';
-    return;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const query = searchMovieInput.value;
+
+  if (query) {
+    getResults(SEARCH_API + query);
+    searchMovieInput.value = '';
   }
+});
 
-  getResults(query, page)
-    .then(data => {
-      if (!data.total_results) {
-        setTimeout(() => {
-          searchErrorMsg.classList.add('is-hidden');
-        }, 5000);
-        searchErrorMsg.classList.remove('is-hidden');
-        searchErrorMsg.textContent =
-          'Search result not successful. Enter the correct movie name and try again';
-        return;
-      }
-      main.innerHTML = showResults(data.results);
-
-      const pagination = createPagination(data.total_results, data.total_pages);
-
-      pagination.on('beforeMove', ({ page }) => {
-        main.innerHTML = '';
-        getResults(query, page).then(data => {
-          // showHideLoader(refs.loader);
-          main.innerHTML = showResults(data.results);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      });
-    })
-    .catch(error => console.log(error));
-};
-searchMoviesForm.addEventListener('submit', onSearch);
+pagination.on('afterMove', e => {
+  getResults(e.page);
+});
