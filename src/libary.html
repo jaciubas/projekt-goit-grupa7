@@ -13,7 +13,7 @@
   </head>
   <body>
     <!-- W taki sposbu dodajemy fragmenty w główny HTML-plik strony. -->
-<include src="./partials/video.html"></include>
+    <include src="./partials/video.html"></include>
     <include src="./partials/headerSliderLibary.html"></include>
     <div class="container">
       <include src="./partials/spiner.html"></include>
@@ -22,18 +22,12 @@
     <include src="./partials/modal.html"></include>
     <include src="./partials/pagination.html"></include>
 
-    <footer><include src="./partials/footer.html"></include>
-    <include src="./partials/students-modal.html"></include>
+    <footer>
+      <include src="./partials/footer.html"></include>
+      <include src="./partials/students-modal.html"></include>
     </footer>
 
     <!-- Skrypt jest na samym dole kodu. On juz ma w sobie podłączony SAAS plik. -->
-
-    <script src="./index.js" type="module" defer></script>
-
+    <script src="./library.js" type="module" defer></script>
   </body>
 </html>
-
-
-
-
-

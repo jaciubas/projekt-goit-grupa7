@@ -4,7 +4,8 @@ const innerModal = document.querySelector('.modal_inner');
 const modalVideo = document.querySelector('.video_modal');
 const spinner = new Spinner(opts).spin();
 const loader = document.getElementById('video-loader');
-//video iframe
+
+// Video iframe
 const showVideoHTML = videoKey => {
   const iframe = `<iframe class="video_iframe"
     width="600" height="337"

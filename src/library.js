@@ -3,6 +3,8 @@ import './JS/spinner';
 import './JS/video';
 import './sass/main.scss';
 import './JS/modal-library';
+import './JS/pagination-library';
+import pagination from './JS/pagination-library';
 
 const watchedButton = document.querySelector('.btn-watched');
 const queuedButton = document.querySelector('.btn-queue');
@@ -51,22 +53,21 @@ const createLibraryMovieTemplate = async ids => {
       const year = new Date(movieDate).getFullYear();
       const rating = movie.vote_average.toFixed(1);
       const genres = movie.genres[0].name;
-      console.log(genres);
       return createLibraryMovieTemplateHTML(image, id, title, genres, year, rating);
     }),
   );
   main.innerHTML = moviesList.join('');
 };
 
-const loadWatchedLibrary = key => {
+export const loadWatchedLibrary = (key, page) => {
   try {
     const state = localStorage.getItem(key);
     const array = JSON.parse(state);
+    pagination.getCurrentPage(page);
     if (array === null) {
       return;
     } else {
       createLibraryMovieTemplate(array);
-      console.log('array:', array);
     }
   } catch (error) {
     console.error(error.message);
@@ -74,6 +75,10 @@ const loadWatchedLibrary = key => {
 };
 
 loadWatchedLibrary(watchedKey);
+
+pagination.on('afterMove', evt => {
+  loadWatchedLibrary(evt.page);
+});
 
 watchedButton.addEventListener('click', () => {
   loadWatchedLibrary(watchedKey);
@@ -83,9 +88,4 @@ queuedButton.addEventListener('click', () => {
   loadWatchedLibrary(queueKey);
 });
 
-//import './sass/main.scss';
 import './JS/students-modal';
-
-import './JS/pagination'
-import './JS/modal';
-

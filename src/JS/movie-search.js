@@ -7,7 +7,6 @@ const searchMovieInput = document.querySelector('#topSearch');
 const main = document.querySelector('main');
 const searchErrorMsg = document.querySelector('.error-msg');
 const paginationTemplate = document.querySelector('#pagination');
-// const paginationButtons = document.querySelector('.tui-is-selected');
 
 let page = 1;
 const API_KEY = '28f50cf3f177782503c21b43af04c7bc';

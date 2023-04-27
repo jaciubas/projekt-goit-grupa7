@@ -37,12 +37,9 @@ const setWatched = id => {
     Notiflix.Notify.info('You allready added this movie to watched.');
     return;
   } else {
-    console.log(localStorage);
     watched.push(id);
-    console.log(localStorage);
     try {
       saveWatched();
-      console.log(localStorage);
       Notiflix.Notify.success('Succesfully added to watched.');
     } catch (error) {
       console.error(error.message);

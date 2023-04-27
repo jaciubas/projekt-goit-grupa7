@@ -1,4 +1,4 @@
-//opcje spinnera
+// Opcje spinnera
 
 var opts = {
   lines: 13, // The number of lines to draw
