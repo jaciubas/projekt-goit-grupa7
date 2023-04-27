@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { watched, queued, saveWatched, saveQueued } from './watched&queue';
+import { watched, queued, saveWatched, saveQueued } from './watched-queue';
 
 const close = document.querySelector('.close_modal_window');
 const modal = document.querySelector('.modal_window');

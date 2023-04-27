@@ -1,10 +1,10 @@
-import './JS/students-modal';
-import './JS/spinner';
-import './JS/video';
+import './js/students-modal';
+import './js/spinner';
+import './js/video';
 import './sass/main.scss';
-import './JS/modal-library';
-import './JS/pagination-library';
-import pagination from './JS/pagination-library';
+import './js/modal-library';
+import './js/pagination-library';
+import pagination from './js/pagination-library';
 
 const watchedButton = document.querySelector('.btn-watched');
 const queuedButton = document.querySelector('.btn-queue');
@@ -88,4 +88,4 @@ queuedButton.addEventListener('click', () => {
   loadWatchedLibrary(queueKey);
 });
 
-import './JS/students-modal';
+import './js/students-modal';
