@@ -46,6 +46,7 @@ const searchPoster = movie => {
 };
 
 const showResults = movies => {
+  
   main.innerHTML = '';
   movies.forEach(async movie => {
     let { id, title, genres, year } = movie;
@@ -76,12 +77,13 @@ const searchIdForName = (data, arrayOfIds) => {
 };
 
 const getGenresData = async arrayOfIds => {
-  loader.appendChild(spinner.el);
+  loader.append(spinner.el);
   try {
     const GENRES_PATH = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
     const response = await fetch(GENRES_PATH);
     const data = await response.json();
     const genresData = await data.genres;
+    loader.remove(spinner.el);
     if (arrayOfIds) {
       const names = searchIdForName(genresData, arrayOfIds);
       return names;
@@ -94,9 +96,11 @@ const getGenresData = async arrayOfIds => {
 };
 
 searchMoviesForm.addEventListener('submit', e => {
+  
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   const query = searchMovieInput.value;
+  
   if (query) {
     getResults(SEARCH_API + query);
     searchMovieInput.value = '';
