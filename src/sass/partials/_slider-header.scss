@@ -1,3 +1,9 @@
+/*global*/
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
 /*texture - header-home*/
 
 .slider {
@@ -198,7 +204,7 @@
         border-bottom: 3px solid red;
         font-size: 16px;
       }
-      &:focus{
+      &:focus {
         font-size: 16px;
       }
     }
@@ -256,7 +262,6 @@
     height: 24px;
     width: 24px;
     cursor: pointer;
-    
   }
   &_logo-block {
     display: flex;
@@ -274,17 +279,17 @@
 }
 
 @keyframes animLogo {
-	0% {
-		transform: scale(1);
-	}
+  0% {
+    transform: scale(1);
+  }
 
-	50% {
-		transform: scale(1.5);
-	}
+  50% {
+    transform: scale(1.5);
+  }
 
-	100% {
-		transform: scale(1);
-	}
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media screen and (min-width: 768px) {
