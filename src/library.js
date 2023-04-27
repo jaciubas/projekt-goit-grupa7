@@ -85,3 +85,7 @@ queuedButton.addEventListener('click', () => {
 
 //import './sass/main.scss';
 import './JS/students-modal';
+
+import './JS/pagination'
+import './JS/modal';
+
