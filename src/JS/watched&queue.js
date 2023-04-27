@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 
 const modal = document.querySelector('.modal_content');
 
-const watchedKey = 'watched';
+export const watchedKey = 'watched';
 const queueKey = 'queue';
 
 //LOCAL STORAGE
@@ -25,11 +25,11 @@ const loadFromLocalStorage = key => {
   }
 };
 
-const watched = loadFromLocalStorage(watchedKey) || [];
-const queued = loadFromLocalStorage(queueKey) || [];
+export const watched = loadFromLocalStorage(watchedKey) || [];
+export const queued = loadFromLocalStorage(queueKey) || [];
 
-const saveWatched = () => saveToLocalStorage(watchedKey, watched);
-const saveQueued = () => saveToLocalStorage(queueKey, queued);
+export const saveWatched = () => saveToLocalStorage(watchedKey, watched);
+export const saveQueued = () => saveToLocalStorage(queueKey, queued);
 
 //KLIKANIE W BUTTONY
 const setWatched = id => {
@@ -37,9 +37,12 @@ const setWatched = id => {
     Notiflix.Notify.info('You allready added this movie to watched.');
     return;
   } else {
+    console.log(localStorage);
     watched.push(id);
+    console.log(localStorage);
     try {
       saveWatched();
+      console.log(localStorage);
       Notiflix.Notify.success('Succesfully added to watched.');
     } catch (error) {
       console.error(error.message);
@@ -86,78 +89,3 @@ const getMovieForLibrary = async id => {
 };
 
 modal.addEventListener('click', sendToLocalStorage);
-
-// const watchedKey = 'watched';
-// const queueKey = 'queue';
-
-// const saveToLocalStorage = (key, value) => {
-//   try {
-//     const dataToJson = JSON.stringify(value);
-//     localStorage.setItem(key, dataToJson);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// const loadFromLocalStorage = key => {
-//   try {
-//     const dataFromLocalStorage = localStorage.getItem(key);
-//     const jsonToData = JSON.parse(dataFromLocalStorage);
-//     return jsonToData;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// const addToWatched = () => saveToLocalStorage(watchedKey, getWatched);
-// const addToQueue = () => saveToLocalStorage(queueKey, getQueue);
-
-// const getWatched = loadFromLocalStorage(watchedKey) || [];
-// const getQueue = loadFromLocalStorage(queueKey) || [];
-
-// const setWatched = id => {
-//   if (getWatched.includes(id)) {
-//     Notiflix.Notify.info('You allready added this movie to watched.');
-//   }
-//   getWatched.push(id);
-//   console.log(getWatched);
-//   try {
-//     addToWatched();
-//     Notiflix.Notify.success('Succesfully added to watched.');
-//     console.log(addToWatched);
-//   } catch (error) {
-//     console.log(error);
-//     Notiflix.Notify.failure('Something went wrong. Please, try again later.');
-//   }
-// };
-
-// const setQueue = id => {
-//   if (getQueue.includes(id)) {
-//     Notiflix.Notify.info('You allready added this movie to queue.');
-//   } else {
-//     getQueue.push(id);
-//     console.log(getQueue);
-//     try {
-//       addToQueue();
-//       Notiflix.Notify.success('Succesfully added to queue.');
-//     } catch (error) {
-//       console.log(error);
-//       Notiflix.Notify.failure('Something went wrong. Please, try again later.');
-//     }
-//   }
-// };
-
-// const data1 = {
-//   watchedKey,
-//   queueKey,
-//   saveToLocalStorage,
-//   loadFromLocalStorage,
-//   addToWatched,
-//   addToQueue,
-//   getWatched,
-//   getQueue,
-//   setWatched,
-//   setQueue,
-// };
-
-// export default data1;

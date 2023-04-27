@@ -18,29 +18,6 @@ const loader = document.getElementById('loader');
 
 searchErrorMsg.classList.add('is-hidden');
 
-// const getSearchData = async page => {
-//   if (spinner.el instanceof Node) {
-//     loader.appendChild(spinner.el);
-//   }
-
-//   const url = SEARCH_API;
-//   try {
-//     const response = await fetch(url);
-//     const data = await response.json();
-//     const searchedMovies = await data.results;
-//     createMainMovieTemplate(searchedMovies);
-//     pagination.getCurrentPage(page);
-//   } catch (error) {
-//     console.log(error);
-//   } finally {
-//     spinner.stop();
-//   }
-// };
-
-// pagination.on('afterMove', e => {
-//   getSearchData(e.page);
-// });
-
 const getResults = async url => {
   try {
     const response = await fetch(url);
